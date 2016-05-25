@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="foundation.min2.css">
+
+    <!-- <link rel="stylesheet" href="foundation/fonts/foundation-icons.css"> -->
+    <!-- foundation datepicker start -->
+    <!-- DEPS -->
+    <script src="foundation/js/vendor/jquery.js"></script>
+    <!-- CDN - you can use font awesome or fonudation icon via this, or use your own version: -->
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet"> -->
+    <!-- DATEPICKER FILES -->
+    <script src="js/foundation-datepicker.js"></script>
+    <script src="js/locales/foundation-datepicker.vi.js"></script>
+
+    <link rel="stylesheet" href="css/foundation-datepicker.min.css">
+    <!-- foundation datepicker end -->
+    <link rel="Shortcut icon" href="icoh.png" />
+    <style>
+        .top-bar {background-color: #eeeeee;}
+        body {background-image: url("gradient.png");}
+        label {margin-top:10px;}
+        .button {width: 1200px;}
+    </style>
+</head>
+
+<body>
+<div class="top-bar">
+<div class="top-bar-left">
+    <ul class="menu">
+        <li class="menu-text">Hotel Project</li>
+        <li><a href="#">Strona główna</a></li>
+        <li><a href="#">O hotelu</a></li>
+    </ul>
+</div>
+<div class="top-bar-right ">
+    <ul class="menu">
+        <li><a href="#">Zaloguj się</a></li>
+        <li><a href="#">Zarejestruj się</a></li>
+    </ul>
+</div>
+</div>
+<br>
+<br>
+<div class="callout primary">
+<div class="row">
+    <div class="large-12">
+
+        <input type="radio" name="firma" id="firma"><label for="firma">FIRMA</label>
+        <input type="radio" name="osoba fizyczna" id="osoba"><label for="osoba">OSOBA FIZYCZNA</label>
+
+        <label><strong>DANE KLIENTA</strong></label>
+        <table class="table ramka">
+
+            <thead>
+            <tr>
+                <th>Imię
+                    <input type="text" placeholder="Imię" /></th>
+
+                <th>Nazwisko
+                    <input type="text" placeholder="Nazwisko" /></th>
+
+                <th>Nazwa firmy
+                    <input type="text" placeholder="Nazwa firmy" /></th>
+
+                <th>E-mail
+                    <input type="text" placeholder="E-mail" /></th>
+
+                <th>Numer telefonu
+                    <input type="text" placeholder="Numer telefonu" /></th>
+            </tr>
+            </thead>
+
+
+
+            <thead>
+            <tr>
+                <th>Miasto
+                    <input type="text" placeholder="Miasto" /></th>
+
+                <th>Ulica
+                    <input type="text" placeholder="Ulica" /></th>
+
+                <th>Kod pocztowy
+                    <input type="text" placeholder="Kod pocztowy" /></th>
+
+                <th>Numer lokalu
+                    <input type="text" placeholder="Numer lokalu" /></th>
+                <th>Numer mieszkania
+                    <input type="text" placeholder="Numer mieszkania" /></th>
+            </tr>
+            </thead>
+</table>
+        <div class="large-6">
+        <table class="table ramka2">
+            <label><strong>DANE LOGOWANIA</strong></label>
+            <thead>
+            <tr>
+                <th>Login
+                    <input type="text" placeholder="E-mail" /></th>
+                <th>Hasło
+                    <input type="text" placeholder="Hasło" /></th>
+                <th>Powtórz hasło
+                    <input type="text" placeholder="Hasło" /></th>
+            </tr>
+            </thead>
+
+        </table>
+            <br>
+
+            <a href="#" class="button">ZAREJESTRUJ SIĘ</a>
+</div>
+
+
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
