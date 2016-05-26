@@ -19,9 +19,7 @@
 
 if(!$_SESSION['valid']){           
 echo '
-<br><br><br><br><br><br>
-
-    <div class="callout primary">
+<div class="callout primary log">
 <div class="row">
 <div class="large-7">
 

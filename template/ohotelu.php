@@ -1,4 +1,4 @@
-<div class="callout">
+<div class="callout hotel">
     <div class="row small-up-8 medium-up-8 large-up-8">
 
         <img class="thumbnail" src="hotellhot.jpg">
