@@ -28,35 +28,17 @@ echo '
         
 <div class="top-bar">
     <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
+        <ul class="menu">
             <li class="menu-text">Hotel Project</li>
             <li><a href="#">Strona główna</a></li>
-            ';
-            if($_SESSION['valid']==true){
-				echo '
-              <li>
-				<a href="#">Twoje konto</a>
-				<ul class="menu">
-					<li><a href="#">Item 1A</a></li>
-				<!-- ... -->
-				</ul>
-				</li>';
-			}
-			echo '
-			
-            <li><a href="#">Aktualne rezerwacje</a></li>
-            <li><a href="#">Zarezerwuj</a></li>
-            <li><a href="#">Historia</a></li>
+            <li><a href="#">O hotelu</a></li>
         </ul>
-    </div>';
-    if($_SESSION['valid']==true){
-		echo '
+    </div>
     <div class="top-bar-right ">
         <ul class="menu">
-            <li><a href="#">Wyloguj się</a></li>
+            <li class="active"><a href="#">Zaloguj się</a></li>
+            <li><a href="#">Zarejestruj się</a></li>
         </ul>
+    </div>
     </div>';
-}
-
-echo '</div>';
 ?>
