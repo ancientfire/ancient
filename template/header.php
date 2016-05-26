@@ -35,10 +35,21 @@ echo '
         </ul>
     </div>
     <div class="top-bar-right ">
-        <ul class="menu">
-            <li class="active"><a href="#">Zaloguj się</a></li>
+    <ul class="menu">
+    ';
+    
+    if(!$_SESSION['valid']){
+    echo '
+    
+        
+            <li class="active"><a href="?s=logowanie">Zaloguj się</a></li>
             <li><a href="#">Zarejestruj się</a></li>
-        </ul>
-    </div>
-    </div>';
+        
+    ';
+}else{
+	echo '<li class="menu-text">'.$_SESSION['username'].'</li>
+		<li><a href="?s=wyloguj">Wyloguj się</a></li>';
+}
+
+echo '</ul></div></div>';
 ?>

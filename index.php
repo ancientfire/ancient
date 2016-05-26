@@ -8,7 +8,14 @@ include("template/header.php");
 $strona = 'index'; 
 
 $niedozwolone = array('header', 'footer');
- 
+
+if ($_GET['s']=="wyloguj"){
+   unset($_SESSION["user"]);
+   unset($_SESSION["pass"]);
+   unset($_SESSION["valid"]);
+   header('Location: index.php');
+}
+
 if (!empty($_GET['s'])) { 
     $temp_strona = basename($_GET['s']); 
 
