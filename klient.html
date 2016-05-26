@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Witaj | Welcome</title>
     <link rel="stylesheet" href="foundation.css">
-    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-
+    <link rel="stylesheet" href="foundation.min.css">
+	<script src="jquery.js"></script>
     <!-- <link rel="stylesheet" href="foundation/fonts/foundation-icons.css"> -->
     <!-- foundation datepicker start -->
     <!-- DEPS -->
-    <script src="jquery.js"></script>
+    
     <!-- CDN - you can use font awesome or fonudation icon via this, or use your own version: -->
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet"> -->
@@ -19,23 +19,26 @@
     <script src="foundation-datepicker.vi.js"></script>
 
     <link rel="stylesheet" href="foundation-datepicker.min.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="shortcut icon" href="favicon.png" />
     <!-- foundation datepicker end -->
-    <link rel="Shortcut icon" href="icoh.png" />
-    <style>
-        .top-bar {background-color: #eeeeee;}
-        body {background-image: url("gradient.png");}
-        .callout {margin-top: 30px;}
 
-    </style>
 </head>
 
 <body>
+        
 <div class="top-bar">
     <div class="top-bar-left">
-        <ul class="menu">
+        <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Twoje konto</a></li>
+              <li>
+				<a href="#">Twoje konto</a>
+				<ul class="menu">
+					<li><a href="#">Item 1A</a></li>
+				<!-- ... -->
+				</ul>
+			</li>
             <li><a href="#">Aktualne rezerwacje</a></li>
             <li><a href="#">Zarezerwuj</a></li>
             <li><a href="#">Historia</a></li>
@@ -152,7 +155,12 @@
         </div>
         </div>
     </div>
+    
 
+
+<script src="what-input.js"></script>
+<script src="foundation.js"></script>
+<script src="app.js"></script>
 </body>
 
 </html>
