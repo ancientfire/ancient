@@ -7,7 +7,7 @@ echo '
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Witaj | Welcome</title>
     <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/foundation.min.css">
+
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     
 	<script src="js/jquery.js"></script>
