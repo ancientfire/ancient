@@ -3,28 +3,27 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Witaj | Welcome</title>
-
+    <title>Grafik</title>
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/foundation.min.css">
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/app.css">
+    <!-- <link rel="stylesheet" href="foundation/fonts/foundation-icons.css"> -->
+    <!-- foundation datepicker start -->
+    <!-- DEPS -->
     <script src="js/jquery.js"></script>
-    <script src="js/what-input.js"></script>
-    <script src="js/foundation.js"></script>
-
+    <!-- CDN - you can use font awesome or fonudation icon via this, or use your own version: -->
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet"> -->
+    <!-- DATEPICKER FILES -->
     <script src="js/foundation-datepicker.js"></script>
     <script src="js/foundation-datepicker.vi.js"></script>
+
     <link rel="stylesheet" href="css/foundation-datepicker.min.css">
-    <link rel="stylesheet" href="css/app.css">
-
-    <link rel="shortcut icon" href="favicon.png" />
-
-
+    <!-- foundation datepicker end -->
+    <link rel="Shortcut icon" href="favicon.png" />
 </head>
 
 <body>
-
 <div class="top-bar">
     <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
@@ -40,29 +39,33 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Twoje rezerwacje</a>
+                <a href="#">Grafik</a>
                 <ul class="menu">
-                    <li><a href="#">Aktualne rezerwacje</a></li>
-                    <li><a href="#">Edytuj rezerwację</a></li>
-                    <li><a href="#">Usuń rezerwację</a></li>
-                    <li><a href="#">Historia rezerwacji</a></li>
+                    <li><a href="#">Grafik całodniowy</a>
+                        <ul class="menu">
+                            <li><a href="#">Twój grafik</a></li>
+                            <li><a href="#">Serwis sprzątający</a></li>
+                        </ul>
+                    <li><a href="#">Grafik tygodniowy</a>
+                        <ul class="menu">
+                            <li><a href="#">Twój grafik</a></li>
+                            <li><a href="#">Serwis sprzątający</a></li>
+                        </ul>
                 </ul>
             </li>
         </ul>
     </div>
     <div class="top-bar-right ">
         <ul class="menu">
-            <li class="active"><a href="#">Zarezerwuj</a></li>
             <li><a href="#">Wyloguj się</a></li>
         </ul>
     </div>
 </div>
 
+
 <div class="primary callout">
     <div class="row">
         <div class="row large-12">
-            <input type="radio" name="firma" id="firma"><label for="firma">FIRMA</label>
-            <input type="radio" name="osoba fizyczna" id="osoba"><label for="osoba">OSOBA FIZYCZNA</label>
 
             <label><strong>EDYTUJ DANE</strong></label>
 
@@ -70,7 +73,7 @@
                 <thead>
                 <tr>
                     <th>Imię
-                    <input type="text" placeholder="Imię" /></th>
+                        <input type="text" placeholder="Imię" /></th>
 
                     <th>Nazwisko
                         <input type="text" placeholder="Nazwisko" /></th>
@@ -83,15 +86,6 @@
                 </tr>
                 </thead>
 
-                <thead>
-                <tr>
-                    <th>Nazwa firmy
-                        <input type="text" placeholder="Imię" /></th>
-
-                    <th>NIP
-                        <input type="text" placeholder="Nazwisko" /></th>
-                </tr>
-                </thead>
 
 
                 <thead>
@@ -119,7 +113,6 @@
 <script src="js/what-input.js"></script>
 <script src="js/foundation.js"></script>
 <script src="js/app.js"></script>
+
 </body>
 </html>
-
-
