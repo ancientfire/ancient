@@ -29,7 +29,7 @@ if(!$_SESSION['valid']){
                 <div class="row large-7">
                     <h1><strong>Zarezerwuj już dziś!</strong></h1>
                     <div class="column">
-            <table class="table ramka">
+            <table class="table">
                 <thead>
                 <tr>
                     <th>Data przyjazdu:
