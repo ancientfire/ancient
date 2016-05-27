@@ -24,28 +24,35 @@
 </head>
 
 <body>
-        
+
 <div class="top-bar">
     <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="#">Strona główna</a></li>
-              <li>
-				<a href="#">Twoje konto</a>
-				<ul class="menu">
-					<li><a href="#">Twoje dane</a></li>
+            <li>
+                <a href="#">Twoje konto</a>
+                <ul class="menu">
+                    <li><a href="#">Twoje dane</a></li>
                     <li><a href="#">Edytuj dane</a></li>
                     <li><a href="#">Zmień hasło</a></li>
-				<!-- ... -->
-				</ul>
-			</li>
-            <li><a href="#">Aktualne rezerwacje</a></li>
-            <li><a href="#">Zarezerwuj</a></li>
-            <li><a href="#">Historia</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Twoje rezerwacje</a>
+                <ul class="menu">
+                    <li><a href="#">Aktualne rezerwacje</a></li>
+                    <li><a href="#">Edytuj rezerwację</a></li>
+                    <li><a href="#">Usuń rezerwację</a></li>
+                    <li><a href="#">Historia rezerwacji</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="top-bar-right ">
         <ul class="menu">
+            <li class="active"><a href="#">Zarezerwuj</a></li>
             <li><a href="#">Wyloguj się</a></li>
         </ul>
     </div>
@@ -55,7 +62,7 @@
     <div class="row large-7">
         <h1><strong>Zarezerwuj już dziś!</strong></h1>
         <div class="column">
-            <table class="table ramka">
+            <table class="table">
                 <thead>
                 <tr>
                     <th>Data przyjazdu:
