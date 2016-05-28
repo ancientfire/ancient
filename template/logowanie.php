@@ -4,16 +4,37 @@
             
             if (isset($_POST['login']) && !empty($_POST['user']) 
                && !empty($_POST['pass'])) {
+			   
+			   $dbconn = pg_connect("host=localhost dbname=szwedek_aga user=szwedek_aga password=RJBNLC8q")
+							or die('Could not connect: ' . pg_last_error());
+			   
+			   $query = "select id_pracownika, id_klienta, email, haslo from logowanie where email='".$_POST['user']."'";
+			   
+			   $result = pg_fetch_array(pg_query($query));
 				
-               if ($_POST['user'] == 'test' && 
-                  $_POST['pass'] == 'test') {
+               if ($result){
+				  if($_POST['user']==$result[2] && $_POST['pass']==$result[3]){
+				  
+				  $_SESSION['id'] = ($result[0])? $result[0] : $result[1];
+				  $_SESSION['kp'] = ($result[0])? "p" : "k";
+				  //$query = "select id_pracownika, id_klienta, email, haslo from logowanie where email='".$_POST['user']."'";
+				  //$result = pg_fetch_array(pg_query($query));
+				  
+				  
                   $_SESSION['valid'] = true;
                   $_SESSION['timeout'] = time();
-                  $_SESSION['username'] = 'test';
-                  
+                  $_SESSION['username'] = $_POST['user'];
                   header('Location: index.php');
-               }else {
-                  $msg = 'Wrong username or password';
+					}else{
+															echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Logowanie nie powiodło się.
+				</div>
+				</div>
+				</div>';
+					}
                }
             }else{
 

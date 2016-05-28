@@ -134,9 +134,9 @@ echo '<div class="callout primary rejestr">
                 <th>Login
                     <input type="text" name="mail" placeholder="E-mail" /></th>
                 <th>Hasło
-                    <input type="text" name="pass1" placeholder="Hasło" /></th>
+                    <input type="password" name="pass1" placeholder="Hasło" /></th>
                 <th>Powtórz hasło
-                    <input type="text" name="pass2" placeholder="Hasło" /></th>
+                    <input type="password" name="pass2" placeholder="Hasło" /></th>
             </tr>
             </thead>
 
