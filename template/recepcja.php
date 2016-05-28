@@ -49,6 +49,6 @@ div class="primary callout archive">
 
     </table>
     <div class="large-2 columns">
-        <p><a href="file:///C:/Users/agata/Downloads/foundation-6.2.1-essential/aktualne_rez.html">Zobacz więcej>></a></p>
+        <p><a href="aktualne_rez.html">Zobacz więcej>></a></p>
     </div>
 </div>

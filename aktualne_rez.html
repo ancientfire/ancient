@@ -3,41 +3,87 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Aktualne rezerwacje| Welcome</title>
-    <link rel="stylesheet" href="foundation.css">
+    <title>Aktualne rezerwacje</title>
+    <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
 
     <!-- <link rel="stylesheet" href="foundation/fonts/foundation-icons.css"> -->
     <!-- foundation datepicker start -->
     <!-- DEPS -->
-    <script src="jquery.js"></script>
+    <script src="js/jquery.js"></script>
     <!-- CDN - you can use font awesome or fonudation icon via this, or use your own version: -->
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet"> -->
     <!-- DATEPICKER FILES -->
-    <script src="foundation-datepicker.js"></script>
-    <script src="foundation-datepicker.vi.js"></script>
+    <script src="js/foundation-datepicker.js"></script>
+    <script src="js/foundation-datepicker.vi.js"></script>
 
-    <link rel="stylesheet" href="foundation-datepicker.min.css">
+    <link rel="stylesheet" href="css/foundation-datepicker.min.css">
     <!-- foundation datepicker end -->
-    <link rel="Shortcut icon" href="icoh.png" />
-    <style>
-        .top-bar {background-color: #eeeeee;}
-        body {background-image: url("gradient.png");}
-        .callout {margin-top: 40px;}
+    <link rel="Shortcut icon" href="favicon.png" />
 
-    </style>
 </head>
 
 <body>
 <div class="top-bar">
     <div class="top-bar-left">
-        <ul class="menu">
+        <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Twoje dane</a></li>
-            <li><a href="#">Grafik pracowniczy</a></li>
-            <li><a href="#">Rezerwacje</a></li>
+            <li>
+                <a href="#">Twoje konto</a>
+                <ul class="menu">
+                    <li><a href="#">Twoje dane</a></li>
+                    <li><a href="#">Edytuj dane</a></li>
+                    <li><a href="#">Zmień hasło</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Grafik pracowniczy</a>
+                <ul class="menu">
+                    <li><a href="#">Grafik całodniowy</a>
+                        <ul class="menu">
+                            <li><a href="#">Recepcja</a></li>
+                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="#">Sprzątanie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Grafik tygodniowy</a>
+                        <ul class="menu">
+                            <li><a href="#">Recepcja</a></li>
+                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="#">Sprzątanie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Twój grafik</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li><a href="#">Rezerwacje</a>
+                <ul class="menu">
+                    <li><a href="#">Dodaj rezerwację</a></li>
+                    <li><a href="#">Edytuj rezerwację</a></li>
+                    <li><a href="#">Usuń rezerwację</a></li>
+                    <li><a href="#">Wyszukaj rezerwację</a></li>
+
+                </ul>
+            </li>
+            <li><a href="#">Meldunki</a>
+                <ul class="menu">
+                    <li><a href="#">Zamelduj</a></li>
+                    <li><a href="#">Wymelduj</a></li>
+                    <li><a href="#">Wyszukaj</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Pokoje</a>
+                <ul class="menu">
+                    <li><a href="#">Wolne pokoje</a></li>
+                    <li><a href="#">Zajęte pokoje</a></li>
+                    <li><a href="#">Pokoje wyłączone z użycia</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="top-bar-right ">
@@ -340,6 +386,12 @@
         </table>
     </div>
 </div>
+
+
+<script src="js/what-input.js"></script>
+<script src="js/foundation.js"></script>
+<script src="js/app.js"></script>
+
 </body>
 
 </html>
