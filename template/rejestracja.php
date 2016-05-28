@@ -20,6 +20,7 @@ $dbconn = pg_connect("host=localhost dbname=szwedek_aga user=szwedek_aga passwor
 				$pass1=$_POST['pass1'];
 				$pass2=$_POST['pass2'];
 
+			if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
 			if ($typ=="of") {
 
 				if(!empty($imie) && !empty($nazw) && !empty($pesel) && !empty($tel) && !empty($miasto) && !empty($ulica) && !empty($kod)
@@ -38,6 +39,7 @@ $dbconn = pg_connect("host=localhost dbname=szwedek_aga user=szwedek_aga passwor
 				
 				$query = "insert into logowanie (id_klienta,email,haslo) values ('$id','$mail','$pass1')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+				pg_close($dbconn);
 				echo '
 				<div class="callout primary rejestr">
 				<div class="row">
@@ -47,7 +49,7 @@ $dbconn = pg_connect("host=localhost dbname=szwedek_aga user=szwedek_aga passwor
 				</div>
 				</div>';	
 				}else{
-									echo '
+				echo '
 				<div class="callout primary rejestr">
 				<div class="row">
 				<div class="small-3 small-centered columns text-center">		
@@ -69,7 +71,67 @@ $dbconn = pg_connect("host=localhost dbname=szwedek_aga user=szwedek_aga passwor
 				
 			}
 
+				}else{
+				if(!empty($nfirmy) && !empty($nip) && !empty($tel) && !empty($miasto) && !empty($ulica) && !empty($kod)
+					&& !empty($nlokalu) && !empty($nmieszk) && !empty($mail) && !empty($pass1) && !empty($pass2)){
+				
+
+				$query = "select count(*) from logowanie where email='$mail'";
+				$result = pg_fetch_result(pg_query($query), 0);
+				
+				if($result==0){
+					if($pass1==$pass2){
+						
+				$query = "insert into klient (nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu) values ('$nfirmy','','','$kod','','$nip','$tel') returning id_klienta";
+				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+				$id = pg_fetch_row($result)['0'];
+				
+				$query = "insert into logowanie (id_klienta,email,haslo) values ('$id','$mail','$pass1')";
+				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+				pg_close($dbconn);
+				echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Witamy w Hotelu Project! 
+				</div>
+				</div>
+				</div>';	
+				}else{
+				echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Hasła nie są równe.
+				</div>
+				</div>
+				</div>';					
 				}
+				}else{
+				echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-5 small-centered columns text-center">		
+				Klient o takim adresie email już istnieje.
+				</div>
+				</div>
+				</div>';
+			}
+				
+			}					
+					
+					
+				}
+			}else{
+								echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-5 small-centered columns text-center">		
+				Nieprawidłowy mail.
+				</div>
+				</div>
+				</div>';
+			}
 
 			   }else{   
 echo '<div class="callout primary rejestr">
@@ -178,5 +240,5 @@ radios.click(function() {
 
 ';
 }
-pg_close($dbconn);
+
 ?>

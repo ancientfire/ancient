@@ -15,15 +15,19 @@
                if ($result){
 				  if($_POST['user']==$result[2] && $_POST['pass']==$result[3]){
 				  
-				  $_SESSION['id'] = ($result[0])? $result[0] : $result[1];
-				  $_SESSION['kp'] = ($result[0])? "p" : "k";
-				  //$query = "select id_pracownika, id_klienta, email, haslo from logowanie where email='".$_POST['user']."'";
-				  //$result = pg_fetch_array(pg_query($query));
-				  
+				  $_SESSION['id'] = ($result[0]==NULL)? $result[1] : $result[0];
+				  $_SESSION['kp'] = ($result[0]==NULL)? "k" : "p";
+				  $_SESSION['s'] = -1;
+				  if($_SESSION['kp']=="p"){
+				  $query = "select id_stanowiska from pracownik where id_pracownika='".$_SESSION['id']."'";
+				  $_SESSION['s'] = pg_fetch_result(pg_query($query), 0);
+				  }
 				  
                   $_SESSION['valid'] = true;
                   $_SESSION['timeout'] = time();
                   $_SESSION['username'] = $_POST['user'];
+                  
+                  pg_close($dbconn);
                   header('Location: index.php');
 					}else{
 															echo '
@@ -35,7 +39,18 @@
 				</div>
 				</div>';
 					}
-               }
+               }else{
+				pg_close($dbconn);   
+				   echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Błędny login lub hasło.
+				</div>
+				</div>
+				</div>';
+				   
+			   }
             }else{
 
 if(!$_SESSION['valid']){           
@@ -48,7 +63,7 @@ echo '
     <table class="table ramka">
         <thead>
             <tr>
-                <th>Login
+                <th>E-mail
                 <input type="text" name="user" placeholder="Login" /></th>
             </tr>
         </thead>

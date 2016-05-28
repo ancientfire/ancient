@@ -83,6 +83,33 @@ if(!$_SESSION['valid']){
                 </div>
             </div>';
 		}else{
+			
+			if($_SESSION['s']==0){
+			echo '
+			<div class="primary callout klient">
+    <div class="row large-10">
+        <h3><strong>Baza pracowników</strong></h3>
+            <p><a href="baza_prac.html">Zobacz więcej>></a></p>
+    </div>
+</div>
+
+<div class="primary callout">
+    <div class="row large-10">
+        <h3><strong>Oferta</strong></h3>
+        <p><a href="oferta.html">Zobacz więcej>></a></p>
+    </div>
+</div>
+
+
+<div class="primary callout">
+    <div class="row large-10">
+        <h3><strong>Grafik</strong></h3>
+        <p><a href="grafik.html">Zobacz więcej>></a></p>
+    </div>
+</div>
+			';	
+				
+			}else{
 			echo '
 			<div class="primary callout klient">
     <div class="row large-7">
@@ -187,6 +214,6 @@ if(!$_SESSION['valid']){
             <p><a href="file:///C:/Users/agata/Downloads/foundation-6.2.1-essential/historia_rez.html">Zobacz więcej>></a></p>
         </div>
     </div>
-</div>';
+</div>';}
 }
 ?>

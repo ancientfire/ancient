@@ -39,6 +39,8 @@ echo '
             <li><a href="?s=ohotelu">O hotelu</a></li>
         </ul>';
 	}else{
+		if($_SESSION['valid']) {
+			if($_SESSION['kp']=="k"){
         echo '
         <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
@@ -61,7 +63,71 @@ echo '
                     <li><a href="#">Karta pobytu</a></li>
                 </ul>
             </li>
-        </ul>';}
+        </ul>';}else{
+			if($_SESSION['s']==0){
+			echo ' 
+			<ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Hotel Project</li>
+            <li>
+                <a href="#">Twoje konto</a>
+                <ul class="menu">
+                    <li><a href="#">Twoje dane</a></li>
+                    <li><a href="#">Edytuj dane</a></li>
+                    <li><a href="#">Zmień hasło</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Grafik pracowniczy</a>
+                <ul class="menu">
+                    <li><a href="#">Dodaj grafik</a>
+                        <ul class="menu">
+                            <li><a href="#">Recepcja</a></li>
+                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="#">Sprzątanie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Edytuj grafik</a>
+                        <ul class="menu">
+                            <li><a href="#">Recepcja</a></li>
+                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="#">Sprzątanie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Archiwum grafików</a>
+                        <ul class="menu">
+                            <li><a href="#">Recepcja</a></li>
+                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="#">Sprzątanie</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a>Pracownicy</a>
+                <ul class="menu">
+                    <li><a href="?s=pracownik&f=add">Dodaj pracownika</a></li>
+                    <li><a href="#">Edytuj dane pracownika</a></li>
+                </ul>
+            </li>
+            <li>
+            <a href="#">Oferta</a>
+            <ul class="menu">
+                <li><a href="#">Dodaj oferty</a></li>
+                <li><a href="#">Edytuj oferty</a></li>
+            </ul>
+            </li>
+        </ul>';	
+				
+			}
+			
+			
+		}
+        
+        
+        }
+        
+        }
         
         echo'
     </div>
@@ -77,9 +143,16 @@ echo '
             <li><a href="?s=rejestracja">Zarejestruj się</a></li>
         
     ';
-}else{
-	echo '<li class="menu-text">'.$_SESSION['username'].'</li>
-		<li><a href="?s=wyloguj">Wyloguj się</a></li>';
+	}else{
+		
+		if($_SESSION['kp']=="k"){
+		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
+			<li class="active"><a href="#">Zarezerwuj</a></li>
+			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
+	}else{
+		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
+			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
+	}
 }
 
 echo '</ul></div></div>';
