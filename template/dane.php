@@ -1,68 +1,58 @@
-<div class="primary callout archive">
-    <div class="row large-10">
-        <h3><strong>Twoje dane</strong></h3>
-        <table>
+<div class="primary callout">
+    <div class="row">
+        <div class="row large-12">
+            <input type="radio" name="firma" id="firma"><label for="firma">FIRMA</label>
+            <input type="radio" name="osoba fizyczna" id="osoba"><label for="osoba">OSOBA FIZYCZNA</label>
 
-            <thead>
-            <tr>
-                <th width="100">ID klienta</th>
-                <th width="100">Numer telefonu</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Content Here</td>
-                <td>Content Here</td>
-            </tr>
-            </tbody>
+            <label><strong>EDYTUJ DANE</strong></label>
 
-            <thead>
-            <tr>
-                <th width="100">Nazwa firmy</th>
-                <th width="100">NIP</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Content Here</td>
-                <td>Content Here</td>
-            </tr>
-            </tbody>
-            <thead>
-            <tr>
+            <table class="table ramka3">
+                <thead>
+                <tr>
+                    <th>Imię
+                        <input type="text" placeholder="Imię" /></th>
 
-                <th width="100">Imię</th>
-                <th width="100">Nazwisko</th>
-                <th width="100">PESEL</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Content Here</td>
-                <td>Content Here</td>
-                <td>Content Here</td>
-            </tr>
-            </tbody>
-            <thead>
-            <tr>
-                <th width="100">Miasto</th>
-                <th width="100">Ulica</th>
-                <th width="100">Kod pocztowy</th>
-                <th width="100">Numer lokalu</th>
-                <th width="100">Numer mieszkania</th>
+                    <th>Nazwisko
+                        <input type="text" placeholder="Nazwisko" /></th>
 
-            </tr>
-            </thead>
-            <tbody>
+                    <th>PESEL
+                        <input type="text" placeholder="PESEL" /></th>
 
-            <tr>
-                <td>Content Here</td>
-                <td>Content Here</td>
-                <td>Content Here</td>
-                <td>Content Here</td>
-                <td>Content Here</td>
-            </tr>
-            </tbody>
-        </table>
+                    <th>Numer telefonu
+                        <input type="text" placeholder="Numer telefonu" /></th>
+                </tr>
+                </thead>
+
+                <thead>
+                <tr>
+                    <th>Nazwa firmy
+                        <input type="text" placeholder="Imię" /></th>
+
+                    <th>NIP
+                        <input type="text" placeholder="Nazwisko" /></th>
+                </tr>
+                </thead>
+
+
+                <thead>
+                <tr>
+                    <th>Miasto
+                        <input type="text" placeholder="Miasto" /></th>
+
+                    <th>Ulica
+                        <input type="text" placeholder="Ulica" /></th>
+
+                    <th>Kod pocztowy
+                        <input type="text" placeholder="Kod pocztowy" /></th>
+
+                    <th>Numer lokalu
+                        <input type="text" placeholder="Numer lokalu" /></th>
+
+                    <th>Numer mieszkania
+                        <input type="text" placeholder="Numer mieszkania" /></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </div>
