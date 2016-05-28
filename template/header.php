@@ -51,9 +51,16 @@ echo '
                     <li><a href="#">Zmień hasło</a></li>
 				</ul>
 			</li>
-            <li><a href="#">Aktualne rezerwacje</a></li>
-            <li><a href="#">Zarezerwuj</a></li>
-            <li><a href="#">Historia</a></li>
+            <li>
+                <a href="#">Twoje rezerwacje</a>
+                <ul class="menu">
+                    <li><a href="#">Aktualne rezerwacje</a></li>
+                    <li><a href="#">Edytuj rezerwację</a></li>
+                    <li><a href="#">Usuń rezerwację</a></li>
+                    <li><a href="#">Historia rezerwacji</a></li>
+                    <li><a href="#">Karta pobytu</a></li>
+                </ul>
+            </li>
         </ul>';}
         
         echo'

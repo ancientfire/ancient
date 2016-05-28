@@ -61,11 +61,11 @@
 
 
 <div class="primary callout">
+    <div class="row">
     <div class="row large-12">
         <h1><strong>Zarezerwuj</strong></h1>
         <div class="column">
             <table class="table">
-
 
                 <label><strong><h4>DANE KLIENTA</h4></strong></label>
 
@@ -74,6 +74,8 @@
 
                     <thead>
                     <tr>
+                        <th>ID klienta
+                            <input type="text" placeholder="ID klienta" /></th>
                         <th>Imię
                             <input type="text" placeholder="Imię" /></th>
 
@@ -90,6 +92,9 @@
 
                     <thead>
                     <tr>
+                        <th>ID klienta
+                            <input type="text" placeholder="ID klienta" /></th>
+
                         <th>Nazwa firmy
                             <input type="text" placeholder="Nazwa firmy" /></th>
 
@@ -115,12 +120,13 @@
                             <input type="text" placeholder="Numer mieszkania" /></th>
                     </tr>
                     </thead>
-</table>
-            <div class="row large-10">
-                <table class="table">
+            </table>
+            </div>
+
+            <div class="column">
 
                 <label><strong><h4>DANE REZERWACJI</h4></strong></label>
-
+                <table class="table">
                 <thead>
                 <tr>
                     <th>Data przyjazdu:
@@ -150,21 +156,34 @@
                     </tr>
                     </thead>
 
+                </table>
 
-</table>
+
             <label><strong><h4>PŁATNOŚĆ</h4></strong></label>
             <table class="table">
+                <div class="column">
 
+                        <div class="row large-4">
+                            <input type="text" placeholder="Cena" />
+                            <a href="#" class="button radius">Oblicz cenę</a>
+                        </div>
+                </div>
+            </table>
                     <label><strong><h6>Sposób płatności</h6></strong></label>
-
+            <table class="table">
+                    <div class="column">
                     <input type="radio" name="gotowka" id="gotowka"><label for="gotowka">Gotówką</label>
                     <input type="radio" name="karta" id="karta"><label for="karta">Kartą</label>
-</table>
-            <table class="table">
+                        </div>
+            </table>
+
                     <label><strong><h6>Rodzaj rachunku</h6></strong></label>
+        <table class="table">
+            <div class="column">
 
                     <input type="radio" name="paragon" id="paragon"><label for="paragon">Paragon</label>
                     <input type="radio" name="faktura" id="faktura"><label for="faktura">Faktura</label>
+                </div>
             </table>
                     <script>
                         // implementation of disabled form fields
@@ -191,11 +210,15 @@
                             checkout.hide();
                         }).data('datepicker');
                     </script>
-                </tr>
-                </thead>
-                </table>
-            </div>
         </div>
+    </div>
+                        <div class="column">
+                     <div class="row large-24">
+                        <a href="#" class="button but1">Dokonaj rezerwacji</a>
+                     </div>
+                     </div>
+
+</div>
     </div>
 
 

@@ -2,24 +2,42 @@
     <div class="row large-10">
         <h3><strong>Twoje dane</strong></h3>
         <table>
+
             <thead>
             <tr>
-
                 <th width="100">ID klienta</th>
-                <th width="100">Imię</th>
-                <th width="100">Nazwisko</th>
-                <th width="100">Nazwa firmy</th>
-                <th width="100">NIP</th>
-                <th width="100">PESEL</th>
-                <th width="100">Nr telefonu</th>
+                <th width="100">Numer telefonu</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>Content Here</td>
                 <td>Content Here</td>
+            </tr>
+            </tbody>
+
+            <thead>
+            <tr>
+                <th width="100">Nazwa firmy</th>
+                <th width="100">NIP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
                 <td>Content Here</td>
                 <td>Content Here</td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+
+                <th width="100">Imię</th>
+                <th width="100">Nazwisko</th>
+                <th width="100">PESEL</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
                 <td>Content Here</td>
                 <td>Content Here</td>
                 <td>Content Here</td>
