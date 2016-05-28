@@ -1,8 +1,10 @@
-<div class="callout primary rejestr">
+<?php
+
+echo '<div class="callout primary rejestr">
 <div class="row">
     <div class="row large-12">
         <input type="radio" name="firma" id="firma"><label for="firma">FIRMA</label>
-        <input type="radio" name="osoba fizyczna" id="osoba"><label for="osoba">OSOBA FIZYCZNA</label>
+        <input type="radio" name="osoba" id="osoba"><label for="osoba">OSOBA FIZYCZNA</label>
 
         <label><strong>DANE KLIENTA</strong></label>
 
@@ -73,4 +75,6 @@
 
             </div>
     </div>
-</div>
+</div>';
+
+?>
