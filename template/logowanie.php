@@ -5,8 +5,7 @@
             if (isset($_POST['login']) && !empty($_POST['user']) 
                && !empty($_POST['pass'])) {
 			   
-			   $dbconn = pg_connect("host=localhost dbname=szwedek_aga user=szwedek_aga password=RJBNLC8q")
-							or die('Could not connect: ' . pg_last_error());
+			   include 'config.php';
 			   
 			   $query = "select id_pracownika, id_klienta, email, haslo from logowanie where email='".$_POST['user']."'";
 			   
