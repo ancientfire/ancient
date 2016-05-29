@@ -12,16 +12,24 @@ if(!$_SESSION['valid']){
 
             <br><div class="row small-up-4 medium-up-4 large-up-4">
                 <div class="column">
-                    <img class="thumbnail" src="OHOTELU.png">
+                    <a class="th" role="button" aria-label="Thumbnail" href="OHOTELU.png">
+                        <img aria-hidden=true src="OHOTELU.png"/>
+                    </a>
                 </div>
                 <div class="column">
-                    <img class="thumbnail" src="OFERTA.png">
+                    <a class="th" role="button" aria-label="Thumbnail" href="OFERTA.png">
+                        <img aria-hidden=true src="OFERTA.png"/>
+                        </a>
                 </div>
                 <div class="column">
-                    <img class="thumbnail" src="AKTUALNOSCI.png">
+                    <a class="th" role="button" aria-label="Thumbnail" href="AKTUALNOSCI.png">
+                        <img aria-hidden=true src="AKTUALNOSCI.png"/>
+                    </a>
                 </div>
                 <div class="column">
-                    <img class="thumbnail" src="ZAREZERWUJ.png">
+                    <a class="th" role="button" aria-label="Thumbnail" href="ZAREZERWUJ.png">
+                        <img aria-hidden=true src="ZAREZERWUJ.png"/>
+                    </a>
                 </div>
             </div></br>
 <br>
@@ -44,7 +52,7 @@ if(!$_SESSION['valid']){
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
-                        <option value="5">5</option>
+                       
                         <option value="6">6</option>
                     </select> </th>
 
@@ -130,7 +138,7 @@ if(!$_SESSION['valid']){
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                            <option value="5">5</option>
+                     
                             <option value="6">6</option>
                         </select> </th>
 

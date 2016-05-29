@@ -48,7 +48,7 @@ echo '
               <li>
 				<a>Twoje konto</a>
 				<ul class="menu">
-					<li><a href="?s=dane">Edytuj dane</a></li>
+					<li><a href="?s=dane">Wyświetl/Edytuj dane</a></li>
                     <li><a href="#">Zmień hasło</a></li>
 				</ul>
 			</li>
@@ -70,7 +70,7 @@ echo '
             <li>
                 <a>Twoje konto</a>
                 <ul class="menu">
-                    <li><a href="?s=dane">Edytuj dane</a></li>
+                    <li><a href="?s=dane">Wyświetl/Edytuj dane</a></li>
                     <li><a href="#">Zmień hasło</a></li>
                 </ul>
             </li>
@@ -104,14 +104,14 @@ echo '
                 <a>Pracownicy</a>
                 <ul class="menu">
                     <li><a href="?s=pracownik&f=add">Dodaj pracownika</a></li>
-                    <li><a href="#">Edytuj dane pracownika</a></li>
+                    <li><a href="#">Wyświetl/Edytuj dane pracownika</a></li>
                 </ul>
             </li>
             <li>
             <a href="#">Oferta</a>
             <ul class="menu">
                 <li><a href="#">Dodaj oferty</a></li>
-                <li><a href="#">Edytuj oferty</a></li>
+                <li><a href="#">Wyświetl/Edytuj oferty</a></li>
             </ul>
             </li>
         </ul>';	
@@ -144,7 +144,7 @@ echo '
 		
 		if($_SESSION['kp']=="k"){
 		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
-			<li class="active"><a href="#">Zarezerwuj</a></li>
+			<li class="active"><a href="?s=zarezerwuj">Zarezerwuj</a></li>
 			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
 	}else{
 		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
