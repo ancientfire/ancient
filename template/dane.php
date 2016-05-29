@@ -1,4 +1,6 @@
 <?php
+
+if($_SESSION['valid']){
 include 'config.php';
 
             if (isset($_POST['zapisz'])) {
@@ -14,7 +16,7 @@ include 'config.php';
 				$kod=$_POST['kod'];
 				$nlokalu=$_POST['nlokalu'];
 				$nmieszk=$_POST['nmieszk'];
-
+			if($_SESSION['kp']=="k"){
 			if ($typ=="of") {
 	
 				if(!empty($imie) && !empty($nazw) && !empty($pesel) && !empty($tel) && !empty($miasto) && !empty($ulica) && !empty($kod)
@@ -32,6 +34,17 @@ include 'config.php';
 				</div>
 				</div>
 				</div>';
+				header( "refresh:3;url=index.php" );
+			}else{
+											echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Nieprawidłowe lub puste dane.
+				</div>
+				</div>
+				</div>';	
+				header( "refresh:3;url=index.php" );
 			}
 
 				}else{
@@ -50,10 +63,51 @@ include 'config.php';
 				</div>
 				</div>
 				</div>';	
-					
+				header( "refresh:3;url=index.php" );	
+				}else{
+												echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Nieprawidłowe lub puste dane.
+				</div>
+				</div>
+				</div>';	
 				}
 			}
 			}else{
+				if(!empty($imie) && !empty($nazw) && !empty($tel) && !empty($miasto) && !empty($ulica) && !empty($kod)
+					&& !empty($nlokalu) && !empty($nmieszk)){
+						
+				$query = "update pracownik set imie='$imie',nazwisko='$nazw',adres='".$kod."*".$miasto."*".$ulica."*".$nmieszk."*".$nlokalu."',nr_tele='$tel' where id_pracownika='".$_SESSION['id']."'";
+				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+				pg_close($dbconn);
+				echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Zapisano.
+				</div>
+				</div>
+				</div>';	
+				header( "refresh:3;url=index.php" );
+			}else{
+							echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Nieprawidłowe lub puste dane.
+				</div>
+				</div>
+				</div>';	
+				header( "refresh:3;url=index.php" );	
+				
+			}
+				
+			}
+		}
+			else{
 				
 if($_SESSION['kp']=="k"){
 
@@ -149,6 +203,66 @@ radios.click(function() {
 </script>
 ';
 pg_close($dbconn);
-}}
+}else{
 
+$query = "select imie,nazwisko,adres,nr_tele from pracownik where id_pracownika='".$_SESSION['id']."'";
+$result = pg_fetch_array(pg_query($query));
+
+$adres=explode("*", $result[2]);
+
+echo '
+<div class="primary callout klient">
+    <div class="row">
+    <form method="post">
+        <div class="row large-12">
+
+            <label><strong>EDYTUJ DANE</strong></label>
+
+            <table class="table ramka3">
+                <thead>
+                <tr>
+                    <th>Imię
+                        <input type="text" name="imie" value="'.$result[0].'" /></th>
+
+                    <th>Nazwisko
+                        <input type="text" name="nazw" value="'.$result[1].'" /></th>
+
+                    <th>Numer telefonu
+                        <input type="text" name="tel" value="'.$result[3].'" /></th>
+                </tr>
+                </thead>
+
+
+
+                <thead>
+                <tr>
+                    <th>Miasto
+                        <input type="text" name="miasto" value="'.$adres[1].'" /></th>
+
+                    <th>Ulica
+                        <input type="text" name="ulica" value="'.$adres[2].'" /></th>
+
+                    <th>Kod pocztowy
+                        <input type="text" name="kod" value="'.$adres[0].'" /></th>
+
+                    <th>Numer lokalu
+                        <input type="text" name="nlokalu" value="'.$adres[4].'" /></th>
+
+                    <th>Numer mieszkania
+                        <input type="text" name="nmieszk" value="'.$adres[3].'" /></th>
+                </tr>
+                </thead>
+            </table>
+            <div class="large-12">
+            <input type="submit" name="zapisz" class="button rejestracja2" value="ZAPISZ" />
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+';	
+}
+
+}
+}
 ?>

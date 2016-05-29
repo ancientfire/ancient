@@ -46,10 +46,9 @@ echo '
             <li class="menu-text">Hotel Project</li>
             <li><a href="?">Strona główna</a></li>
               <li>
-				<a href="#">Twoje konto</a>
+				<a>Twoje konto</a>
 				<ul class="menu">
-					<li><a href="#">Twoje dane</a></li>
-                    <li><a href="#">Edytuj dane</a></li>
+					<li><a href="?s=dane">Edytuj dane</a></li>
                     <li><a href="#">Zmień hasło</a></li>
 				</ul>
 			</li>
@@ -69,12 +68,10 @@ echo '
 			<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li>
-                <a href="#">Twoje konto</a>
+                <a>Twoje konto</a>
                 <ul class="menu">
-                    <li><a href="#">Twoje dane</a></li>
-                    <li><a href="#">Edytuj dane</a></li>
+                    <li><a href="?s=dane">Edytuj dane</a></li>
                     <li><a href="#">Zmień hasło</a></li>
-                    <!-- ... -->
                 </ul>
             </li>
             <li>
