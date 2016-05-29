@@ -32,7 +32,7 @@ include 'config.php';
 				if($result==0){
 					if($pass1==$pass2){
 						
-				$query = "insert into klient (nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu) values ('','$nazw','$imie','$kod','$pesel','','$tel') returning id_klienta";
+				$query = "insert into klient (nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu) values ('','$nazw','$imie','".$kod."*".$miasto."*".$ulica."*".$nmieszk."*".$nlokalu."','$pesel','','$tel') returning id_klienta";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 				$id = pg_fetch_row($result)['0'];
 				
@@ -81,7 +81,7 @@ include 'config.php';
 				if($result==0){
 					if($pass1==$pass2){
 						
-				$query = "insert into klient (nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu) values ('$nfirmy','','','$kod','','$nip','$tel') returning id_klienta";
+				$query = "insert into klient (nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu) values ('$nfirmy','','','".$kod."*".$miasto."*".$ulica."*".$nmieszk."*".$nlokalu."','','$nip','$tel') returning id_klienta";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 				$id = pg_fetch_row($result)['0'];
 				
