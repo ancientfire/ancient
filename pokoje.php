@@ -1,6 +1,6 @@
 <div class="primary callout archive">
     <div class="row large-10">
-        <h3><strong>Baza pracowników</strong></h3>
+        <h3><strong>Baza pokoi</strong></h3>
         <table>
             <thead>
             <tr>
