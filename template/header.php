@@ -144,7 +144,7 @@ echo '
 		
 		if($_SESSION['kp']=="k"){
 		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
-			<li class="active"><a href="?s=zarezerwuj">Zarezerwuj</a></li>
+			<li class="active"><a href="?s=szuk_pok">Zarezerwuj</a></li>
 			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
 	}else{
 		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
