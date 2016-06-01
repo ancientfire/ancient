@@ -4,9 +4,9 @@ if($_SESSION['valid']) {
     include 'config.php';
 
 
-    if (isset($_POST['rejestr'])) {
-        $dp = $_POST['dp'];
-        $dw = $_POST['dw'];
+    if (isset($_POST['wyszukaj'])) {
+        $dp = date('o-m-d', strtotime($_POST['dp']));
+        $dw = date('o-m-d', strtotime($_POST['dw']));
         $io = $_POST['io'];
 
 
@@ -14,14 +14,23 @@ if($_SESSION['valid']) {
 
             if (!empty($dw) && !empty($dp) && !empty($io)) {
 
-                $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji) values ('$dp','$dw', date)";
+				$data=date('o-m-d');
+                $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta) values ('$dp','$dw', '$data','".$_SESSION['id']."')";
+				//echo $query;
                 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 
-                pg_close($dbconn);
+                //$query = "insert into typ _pokoju (typ) values ('$io')";
+                //$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
+
+                pg_close($dbconn);
+			
+			}
+		}
+}else{
                 echo '
-<div class="primary callout ramka3">
+                <div class="primary callout ramka3">
     <div class="row large-7">
     <form method="post">
         <h1><strong>Sprawdź dostępność</strong></h1>
@@ -35,32 +44,20 @@ if($_SESSION['valid']) {
                     <th>Data wyjazdu:
                         <input type="text" class="span2" name="dw" id="dpd2">
                     </th>
-                    ';
-            }
-            if (!empty($io)) {
-
-                $query = "insert into typ_pokoju (typ)values ('$io')";
-                $result = pg_query($query) or die('Query failed: ' . pg_last_error());
-
-
-                pg_close($dbconn);
-
-                echo '
                     <th> Ilość osób:
-                        <select>
-                            <option name ="io" value="1">1</option>
-                            <option name ="io" value="2">2</option>
-                            <option name ="io" value="3">3</option>
-                            <option name ="io" value="4">4</option>
-                            <option name ="io" value="6">6</option>
+                        <select name="io">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
                         </select> </th>
-<div class="large-12">
-                   <input type="submit" name="rejestr" class="button radius">Wyszukaj</a>
-                   </div>
                 </tr>
                 </thead>
             </table>
-
+<div class="large-12">
+                   <input type="submit" name="wyszukaj" class="button radius" value="Wyszukaj" />
+                   </div>
             <script>
                 // implementation of disabled form fields
                 var nowTemp = new Date();
@@ -91,8 +88,6 @@ if($_SESSION['valid']) {
     </div>
 </div>
 ';
-            }
-        }
-    }
+}
 }
        ?>
