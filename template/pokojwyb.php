@@ -26,6 +26,10 @@ echo "
                 <td>Chuj dupa i kamieni kupa.</td>
                 <td>$row[4]</td>
             </tr>";
+
+    <div class="large-12">
+                   <input type="submit" name="zarezerwuj" class="button radius" value="ZAREZERWUJ" />
+                   </div>
 		}
 pg_close($dbconn);
 echo '
