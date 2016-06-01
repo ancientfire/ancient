@@ -5,14 +5,17 @@ if($_SESSION['valid']) {
 
 
     if (isset($_POST['wyszukaj'])) {
+
         $dp = date('o-m-d', strtotime($_POST['dp']));
         $dw = date('o-m-d', strtotime($_POST['dw']));
+
         $io = $_POST['io'];
 
 
         if ($_SESSION['kp'] == "k") {
 
             if (!empty($dw) && !empty($dp) && !empty($io)) {
+
 
 				$data=date('o-m-d');
                 $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta) values ('$dp','$dw', '$data','".$_SESSION['id']."')";
@@ -22,6 +25,7 @@ if($_SESSION['valid']) {
 
                 //$query = "insert into typ _pokoju (typ) values ('$io')";
                 //$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
 
 
                 pg_close($dbconn);
