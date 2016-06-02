@@ -109,8 +109,7 @@ echo'
             </li>
             <li><a href="#">Meldunki</a>
                 <ul class="menu">
-                    <li><a href="#">Zamelduj</a></li>
-                    <li><a href="#">Wymelduj</a></li>
+                    <li><a href="?s=meldunki">Zamelduj</a></li>
                     <li><a href="#">Wyszukaj</a></li>
                 </ul>
             </li>
