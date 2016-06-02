@@ -38,8 +38,7 @@ echo '
             <li><a href="?">Strona główna</a></li>
             <li><a href="?s=ohotelu">O hotelu</a></li>
         </ul>';
-	}else {
-		if ($_SESSION['valid']) {
+	}else{
 			if ($_SESSION['kp'] == "k") {
 				echo '
         <ul class="dropdown menu" data-dropdown-menu>
@@ -65,59 +64,7 @@ echo '
         </ul>';
 			} else {
 
-				if ($_SESSION['kp'] == "p") {
-					echo '
-					<ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">Hotel Project</li>
-            <li><a href="#">Strona główna</a></li>
-            <li>
-                <a href="#">Twoje konto</a>
-                <ul class="menu">
-                    <li><a href="#">Twoje dane</a></li>
-                    <li><a href="#">Edytuj dane</a></li>
-                    <li><a href="#">Zmień hasło</a></li>
-                    <!-- ... -->
-                </ul>
-            </li>
-            <li>
-                <a href="#">Grafik pracowniczy</a>
-                <ul class="menu">
-                    <li><a href="#">Grafik całodniowy</a>
-                        <ul class="menu">
-                            <li><a href="#">Recepcja</a></li>
-                            <li><a href="#">Kuchnia</a></li>
-                            <li><a href="#">Sprzątanie</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Grafik tygodniowy</a>
-                        <ul class="menu">
-                            <li><a href="#">Recepcja</a></li>
-                            <li><a href="#">Kuchnia</a></li>
-                            <li><a href="#">Sprzątanie</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Twój grafik</a></li>
-                    <!-- ... -->
-                </ul>
-            </li>
-            <li><a href="#">Rezerwacje</a>
-                <ul class="menu">
-                    <li><a href="#">Dodaj rezerwację</a></li>
-                    <li><a href="#">Edytuj rezerwację</a></li>
-                    <li><a href="#">Usuń rezerwację</a></li>
-                    <li><a href="#">Wyszukaj rezerwację</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Meldunki</a>
-                <ul class="menu">
-                    <li><a href="?s=meldunki">Zamelduj</a></li>
-                    <li><a href="#">Wyszukaj</a></li>
-                </ul>
-            </li>
-        </ul>
-';
-				} else {
-					if ($_SESSION['s'] == 0) {
+				if ($_SESSION['s'] == 0) {
 						echo ' 
 			<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
@@ -170,15 +117,65 @@ echo '
             </li>
         </ul>';
 
+					}else{
+											echo '
+					<ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Hotel Project</li>
+            <li><a href="#">Strona główna</a></li>
+            <li>
+                <a href="#">Twoje konto</a>
+                <ul class="menu">
+                    <li><a href="#">Twoje dane</a></li>
+                    <li><a href="#">Edytuj dane</a></li>
+                    <li><a href="#">Zmień hasło</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Grafik pracowniczy</a>
+                <ul class="menu">
+                    <li><a href="#">Grafik całodniowy</a>
+                        <ul class="menu">
+                            <li><a href="#">Recepcja</a></li>
+                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="#">Sprzątanie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Grafik tygodniowy</a>
+                        <ul class="menu">
+                            <li><a href="#">Recepcja</a></li>
+                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="#">Sprzątanie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Twój grafik</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li><a href="#">Rezerwacje</a>
+                <ul class="menu">
+                    <li><a href="#">Dodaj rezerwację</a></li>
+                    <li><a href="#">Edytuj rezerwację</a></li>
+                    <li><a href="#">Usuń rezerwację</a></li>
+                    <li><a href="#">Wyszukaj rezerwację</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Meldunki</a>
+                <ul class="menu">
+                    <li><a href="?s=meldunki">Zamelduj</a></li>
+                    <li><a href="#">Wyszukaj</a></li>
+                </ul>
+            </li>
+        </ul>
+';
+						
 					}
 
 
-				}
-
 
 			}
-
-		}
+}
+		
 
 		echo '
     </div>
@@ -205,7 +202,7 @@ echo '
 			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
 			}
 		}
-	}
+	
 
 echo '</ul></div></div>';
 ?>
