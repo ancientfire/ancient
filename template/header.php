@@ -38,10 +38,10 @@ echo '
             <li><a href="?">Strona główna</a></li>
             <li><a href="?s=ohotelu">O hotelu</a></li>
         </ul>';
-	}else{
-		if($_SESSION['valid']) {
-			if($_SESSION['kp']=="k"){
-        echo '
+	}else {
+		if ($_SESSION['valid']) {
+			if ($_SESSION['kp'] == "k") {
+				echo '
         <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="?">Strona główna</a></li>
@@ -62,10 +62,11 @@ echo '
                     <li><a href="#">Karta pobytu</a></li>
                 </ul>
             </li>
-        </ul>'; }else {
+        </ul>';
+			} else {
 
-				if($_SESSION['kp']=="p"){
-echo'
+				if ($_SESSION['kp'] == "p") {
+					echo '
 					<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="#">Strona główna</a></li>
@@ -115,9 +116,9 @@ echo'
             </li>
         </ul>
 ';
-				}else{
-			if($_SESSION['s']==0){
-			echo ' 
+				} else {
+					if ($_SESSION['s'] == 0) {
+						echo ' 
 			<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li>
@@ -167,43 +168,44 @@ echo'
                 <li><a href="#">Wyświetl/Edytuj oferty</a></li>
             </ul>
             </li>
-        </ul>';	
-				
+        </ul>';
+
+					}
+
+
+				}
+
+
 			}
-			
-			
+
 		}
-        
-        
-        }
-        
-        }
-        
-        echo'
+
+		echo '
     </div>
     <div class="top-bar-right ">
     <ul class="menu">
     ';
-    
-    if(!$_SESSION['valid']){
-    echo '
+
+		if (!$_SESSION['valid']) {
+			echo '
     
         
             <li class="active"><a href="?s=logowanie">Zaloguj się</a></li>
             <li><a href="?s=rejestracja">Zarejestruj się</a></li>
         
     ';
-	}else{
-		
-		if($_SESSION['kp']=="k"){
-		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
+		} else {
+
+			if ($_SESSION['kp'] == "k") {
+				echo '<li class="menu-text">' . $_SESSION['username'] . ' ' . $_SESSION['s'] . '</li>
 			<li class="active"><a href="?s=szuk_pok">Zarezerwuj</a></li>
 			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
-	}else{
-		echo '<li class="menu-text">'.$_SESSION['username'].' '.$_SESSION['s'].'</li>
+			} else {
+				echo '<li class="menu-text">' . $_SESSION['username'] . ' ' . $_SESSION['s'] . '</li>
 			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
+			}
+		}
 	}
-}
 
 echo '</ul></div></div>';
 ?>
