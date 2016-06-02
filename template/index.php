@@ -119,6 +119,8 @@ if(!$_SESSION['valid']){
 			';	
 				
 			}else{
+				
+				if($_GET['h']!=1){
 			echo '
 			<div class="primary callout klient">
     <div class="row large-7">
@@ -209,9 +211,46 @@ if(!$_SESSION['valid']){
 
         </table>
         <div class="large-2 columns">
-            <p><a href="file:///C:/Users/agata/Downloads/foundation-6.2.1-essential/historia_rez.html">Zobacz więcej>></a></p>
+            <p><a href="?h=1">Zobacz więcej>></a></p>
         </div>
     </div>
-</div>';}
+</div>';
+}else{
+	echo '
+	<div class="primary callout archive">
+    <div class="row large-10">
+        <h3><strong>Historia Twoich rezerwacji</strong></h3>
+        <table>
+            <thead>
+            <tr>
+                 <th width="150">Data przyjazdu</th>
+                <th width="150">Data wyjazdu</th>
+                <th width="400">Usługi dodatkowe</th>
+                <th width="150">Sposób płatności</th>
+                <th width="150">Cena</th>
+            </tr>
+            </thead>
+            <tbody>';
+        $query = "select data_przyjazdu, data_wyjazdu, suma_ogolem from rezerwacja where id_klienta=".$_SESSION['id'];
+        $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+		while($row=pg_fetch_row($result)){
+            echo "       
+            <tr>
+                <td>$row[0]</td>
+                <td>$row[1]</td>
+                <td>Content Goes Here Content Goes Here Content Goes Here Content Goes Here </td>
+                <td>Content Here</td>
+                <td>$row[2]</td>
+            </tr>";
+		}
+		pg_close($dbconn);
+                       echo ' </tbody>
+        </table>
+    </div>
+</div>';
+	
+}
+}
 }
 ?>
