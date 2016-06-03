@@ -18,7 +18,7 @@ if (isset($_POST['meldunek'])) {
         if(!empty($imie) && !empty($nazw) && !empty($pesel) && !empty($IDrp) && !empty($miasto) && !empty($ulica) && !empty($kod)
             && !empty($nlokalu) && !empty($nmieszk)){
 
-            $query = "insert into meldunek  (id_rez_pok,nazwisko, imie, adres, pesel) values ('$IDrp','$nazw','$imie',".$kod."*".$miasto."*".$ulica."*".$nmieszk."*".$nlokalu."','$pesel')";
+            $query = "insert into meldunek  (id_rez_pok,nazwisko, imie, adres, pesel) values ('$IDrp','$nazw','$imie','".$kod."*".$miasto."*".$ulica."*".$nmieszk."*".$nlokalu."','$pesel')";
             $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
             pg_close($dbconn);
@@ -30,7 +30,7 @@ if (isset($_POST['meldunek'])) {
 				</div>
 				</div>
 				</div>';
-            header( "refresh:3;url=index.php" );
+            //header( "refresh:3;url=index.php" );
         }else{
             echo '
 				<div class="callout primary rejestr">
@@ -40,15 +40,15 @@ if (isset($_POST['meldunek'])) {
 				</div>
 				</div>
 				</div>';
-            header( "refresh:3;url=meldunki.php" );
+            //header( "refresh:3;url=meldunki.php" );
         }
     }
-}
+}else{
 
 echo'
 
 
-<div class="primary callout">
+<div class="primary callout klient">
 
     <div class="row">
     <form method="post">
@@ -92,13 +92,14 @@ echo'
                 </tr>
                 </thead>
                 
-                <div class="large-12">
-            <input type="submit" name="rejestr" class="button meldunek" value="ZAMELDUJ SIĘ" />
-                </div>
             </table>
+                            <div class="large-12">
+            <input type="submit" name="meldunek" class="button meldunek" value="ZAMELDUJ SIĘ" />
+                </div>
         </div>
         </form>
     </div>
 </div>
     ';
+}
 ?>

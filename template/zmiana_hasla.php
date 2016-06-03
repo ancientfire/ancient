@@ -57,7 +57,11 @@ if($_SESSION['valid']) {
     }else{
 
 echo'
+<<<<<<< HEAD
     <div class="callout primary klient" >
+=======
+    <div class="callout primary" >
+>>>>>>> 02bde1449f8c3849ecd79a74469010332e6b7499
     <div class="row" >
     <form method="post">
         <div class="large-7 ramka" >
@@ -84,6 +88,7 @@ echo'
                 </thead >
 
             </table >
+<<<<<<< HEAD
             </div>
                             <thead >
                 <tr >
@@ -92,6 +97,15 @@ echo'
                 </tr >
                 </thead >
       
+=======
+                            <thead >
+                <tr >
+                    <th ><input type = "submit" name = "zmiana" class="button" value = "Zmien" >
+
+                </tr >
+                </thead >
+        </div >
+>>>>>>> 02bde1449f8c3849ecd79a74469010332e6b7499
         </form>
     </div >
 </div >';}
