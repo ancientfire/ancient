@@ -48,7 +48,7 @@ echo '
 				<a>Twoje konto</a>
 				<ul class="menu">
 					<li><a href="?s=dane">Wyświetl/Edytuj dane</a></li>
-                    <li><a href="#">Zmień hasło</a></li>
+                    <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
 				</ul>
 			</li>
             <li>
@@ -72,7 +72,7 @@ echo '
                 <a>Twoje konto</a>
                 <ul class="menu">
                     <li><a href="?s=dane">Wyświetl/Edytuj dane</a></li>
-                    <li><a href="#">Zmień hasło</a></li>
+                    <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
                 </ul>
             </li>
             <li>
@@ -125,9 +125,8 @@ echo '
             <li>
                 <a href="#">Twoje konto</a>
                 <ul class="menu">
-                    <li><a href="#">Twoje dane</a></li>
-                    <li><a href="#">Edytuj dane</a></li>
-                    <li><a href="#">Zmień hasło</a></li>
+                    <li><a href="?s=dane">Wyświetl/edytuj dane</a></li>
+                    <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
                     <!-- ... -->
                 </ul>
             </li>
