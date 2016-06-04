@@ -145,7 +145,7 @@ if(!$_SESSION['valid']){
                             <option value="6">6</option>
                         </select> </th>
 
-                    <th><br><a href="#" class="button radius">Wyszukaj</a></br></th>
+                    <th><br><a href="?s=szuk_pok" class="button radius">Wyszukaj</a></br></th>
                 </tr>
                 </thead>
             </table>

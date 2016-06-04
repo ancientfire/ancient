@@ -162,7 +162,7 @@ echo '
             <li><a href="#">Meldunki</a>
                 <ul class="menu">
                     <li><a href="?s=meldunki">Zamelduj</a></li>
-                    <li><a href="#">Wyszukaj</a></li>
+                    <li><a href="?s=szuk_meld">Wyszukaj</a></li>
                 </ul>
             </li>
         </ul>
