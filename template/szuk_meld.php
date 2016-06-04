@@ -3,27 +3,58 @@
 if($_SESSION['valid']) {
     include 'config.php';
     $typ=$_POST['typ'];
-    $warunek=$_POST['warunek'];
+    $warunek=$_POST['usr'];
     if(!empty($warunek)) {
-        if ($typ == "idrp") {
-            $query = "select id_rez_pok, nazwisko, imie, adres, pesel from meldunek where id_rez_pok='$warunek'";
-            $result = pg_fetch_result(pg_query($query));
-            $adres=explode("*", $result[3]);
+		
+		
+		echo'
+<div class="primary callout">
+    <div class="row">
+    <form method="post">
+        <div class="row large-12">
+            <label><strong>WYNIK WYSZUKIWANIA</strong></label>
 
+	<div class="primary callout archive">
+    <div class="row large-10">
+        <h3><strong>Szukaj meldunku</strong></h3>
+        <table>
+            <thead>
+            <tr>
+                 <th width="150">ID rezerwacji pokoju</th>
+                <th width="150">Imię</th>
+                <th width="150">Nazwisko</th>
+                <th width="150">PESEL</th>
+                <th width="150">Adres</th>
+            </tr>
+            </thead>
+            <tbody>';
+        $query="";
+        if($typ=="id"){    
+        $query = "select id_rez_pok, nazwisko, imie, adres, pesel from meldunek where id_rez_pok='$warunek'";
+		}else{
+		$query = "select id_rez_pok, nazwisko, imie, adres, pesel from meldunek where nazwisko='$warunek'";
+		}
+		
+        $result = pg_query($query);
 
+		while($row=pg_fetch_row($result)) {
+            echo "
+            <tr>
+                <td>$row[0]</td>
+                <td>$row[1]</td>
+                <td>$row[2]</td>
+                <td>$row[3]</td>
+                <td>$row[4]</td>
+            </tr>";
         }
-        else {
-            $query = "select id_rez_pok, nazwisko, imie, adres, pesel from meldunek where nazwisko='$warunek'";
-            $result = pg_fetch_result(pg_query($query));
-            $adres = explode("*", $result[3]);
-        }
-        }
+        
+        }else{
 
 
     echo'
 
 <div class="primary callout" >
-  <form role="form">
+  <form method="post">
   <table class="table">
   
     <div class="radio">
@@ -53,39 +84,9 @@ radios.click(function() {
 });
 </script>
 ';
-    echo'
-<div class="primary callout">
-    <div class="row">
-    <form method="post">
-        <div class="row large-12">
-            <label><strong>WYNIK WYSZUKIWANIA</strong></label>
-
-	<div class="primary callout archive">
-    <div class="row large-10">
-        <h3><strong>Szukaj meldunku</strong></h3>
-        <table>
-            <thead>
-            <tr>
-                 <th width="150">ID rezerwacji pokoju</th>
-                <th width="150">Imię</th>
-                <th width="150">Nazwisko</th>
-                <th width="150">PESEL</th>
-                <th width="150">Adres</th>
-            </tr>
-            </thead>
-            <tbody>';
-
-		while($row=pg_fetch_row($result)) {
-            echo "
-            <tr>
-                <td>$row[0]</td>
-                <td>$row[1]</td>
-                <td>$row[2]</td>
-                <td>$row[3]</td>
-                <td>$row[4]</td>
-            </tr>";
-        }
+    
 
 
+}
 }
 ?>

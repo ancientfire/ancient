@@ -1,7 +1,4 @@
 <?php
-
-include("dbconnect.php");
-include ("scriptSzuk.php");
 echo '
 <!DOCTYPE html>
 <html lang="en">
