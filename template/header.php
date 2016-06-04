@@ -1,7 +1,7 @@
 <?php
 
 include("dbconnect.php");
-
+include ("scriptSzuk.php");
 echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,8 @@ echo '
 	<script src="js/jquery.js"></script>
 	<script src="js/what-input.js"></script>
     <script src="js/foundation.js"></script>
+    
+<link href="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
 
     <script src="js/foundation-datepicker.js"></script>
     <script src="js/foundation-datepicker.vi.js"></script>

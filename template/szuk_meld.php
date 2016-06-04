@@ -60,48 +60,32 @@ radios.click(function() {
         <div class="row large-12">
             <label><strong>WYNIK WYSZUKIWANIA</strong></label>
 
-            <table class="table ">
-                <thead>
-                <tr>
-                    <th>ID rezerwacji pokoju
-                    <input type="text" name="idrp" value="'.$result[0].'" ></th>
+	<div class="primary callout archive">
+    <div class="row large-10">
+        <h3><strong>Szukaj meldunku</strong></h3>
+        <table>
+            <thead>
+            <tr>
+                 <th width="150">ID rezerwacji pokoju</th>
+                <th width="150">Imię</th>
+                <th width="150">Nazwisko</th>
+                <th width="150">PESEL</th>
+                <th width="150">Adres</th>
+            </tr>
+            </thead>
+            <tbody>';
 
-                    <th>Nazwisko
-                        <input type="text" name="nazw" value="'.$result[1].'" ></th>
+		while($row=pg_fetch_row($result)) {
+            echo "
+            <tr>
+                <td>$row[0]</td>
+                <td>$row[1]</td>
+                <td>$row[2]</td>
+                <td>$row[3]</td>
+                <td>$row[4]</td>
+            </tr>";
+        }
 
-                    <th>Imię
-                        <input type="text" name="imie" value="'.$result[2].'"></th>               
-              
-                    <th>Pesel
-                        <input type="text" name="pesel" value="'.$result[4].'"></th>
-
-                </tr>
-               </thead>
-                     <thead>
-                <tr>
-                    <th>Miasto
-                        <input type="text" name="miasto" value="'.$adres[1].'" /></th>
-
-                    <th>Ulica
-                        <input type="text" name="ulica" value="'.$adres[2].'" /></th>
-
-                    <th>Kod pocztowy
-                        <input type="text" name="kod" value="'.$adres[0].'" /></th>
-
-                    <th>Numer lokalu
-                        <input type="text" name="nlokalu" value="'.$adres[4].'" /></th>
-
-                    <th>Numer mieszkania
-                        <input type="text" name="nmieszk" value="'.$adres[3].'" /></th>
-                </tr>
-                </thead>
-            </table>
-                      
-                </div>
-        </div>
-        </form>
-    </div>
-</div>';
 
 }
 ?>
