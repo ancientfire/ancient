@@ -120,7 +120,7 @@ echo '
 											echo '
 					<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
-            <li><a href="#">Strona główna</a></li>
+            <li><a href="?">Strona główna</a></li>
             <li>
                 <a href="#">Twoje konto</a>
                 <ul class="menu">
@@ -132,21 +132,21 @@ echo '
             <li>
                 <a href="#">Grafik pracowniczy</a>
                 <ul class="menu">
-                    <li><a href="#">Grafik całodniowy</a>
+                    <li><a>Grafik całodniowy</a>
                         <ul class="menu">
-                            <li><a href="#">Recepcja</a></li>
-                            <li><a href="#">Kuchnia</a></li>
-                            <li><a href="#">Sprzątanie</a></li>
+                            <li><a href="?s=wysw_grafik&st=1&l=1">Recepcja</a></li>
+                            <li><a href="?s=wysw_grafik&st=2&l=1">Kuchnia</a></li>
+                            <li><a href="?s=wysw_grafik&st=3&l=1">Sprzątanie</a></li>
                         </ul>
                     </li>
                     <li><a>Grafik tygodniowy</a>
                         <ul class="menu">
-                            <li><a href="#">Recepcja</a></li>
-                            <li><a href="?s=grafik_7_kuch">Kuchnia</a></li>
-                            <li><a href="#">Sprzątanie</a></li>
+                            <li><a href="?s=wysw_grafik&st=1&l=7">Recepcja</a></li>
+                            <li><a href="?s=wysw_grafik&st=2&l=7">Kuchnia</a></li>
+                            <li><a href="?s=wysw_grafik&st=3&l=7">Sprzątanie</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Twój grafik</a></li>
+                    <li><a href="?s=wysw_grafik">Twój grafik</a></li>
                     <!-- ... -->
                 </ul>
             </li>
@@ -192,11 +192,11 @@ echo '
 		} else {
 
 			if ($_SESSION['kp'] == "k") {
-				echo '<li class="menu-text">' . $_SESSION['username'] . ' ' . $_SESSION['s'] . '</li>
+				echo '<li class="menu-text">' . $_SESSION['username'] . ' ' . $_SESSION['id'] . '</li>
 			<li class="active"><a href="?s=szuk_pok">Zarezerwuj</a></li>
 			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
 			} else {
-				echo '<li class="menu-text">' . $_SESSION['username'] . ' ' . $_SESSION['s'] . '</li>
+				echo '<li class="menu-text">' . $_SESSION['username'] . ' ' . $_SESSION['id'] . '</li>
 			<li><a href="?s=wyloguj">Wyloguj się</a></li>';
 			}
 		}

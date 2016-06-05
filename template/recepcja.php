@@ -1,4 +1,4 @@
-div class="primary callout archive">
+<div class="primary callout archive">
 <div class="row large-10">
     <h3><strong>Aktualne rezerwacje</strong></h3>
     <table>
