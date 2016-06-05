@@ -15,9 +15,45 @@ if(!empty($_GET['r'])){
         $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta, id_rez_pok) values ('".$_SESSION['dp']."','".$_SESSION['dw']."', '$data','".$_SESSION['id']."','$id_rez') returning id_rezerwacji";
         $result = pg_query($query) or die('Query failed: ' . pg_last_error());
         $id_rezerwacji = pg_fetch_row($result)['0'];
-        
+
         if ($_SESSION['kp'] == "k") {
 
+if(isset($_POST['zapisz'])){
+$query = "select typ_pokoju.cena from pokoj inner join typ_pokoju on (pokoj.typ=typ_pokoju.typ) where pokoj.id_pokoju='".$_SESSION['p']."'";
+//echo $query;
+$cena = pg_fetch_array(pg_query($query))[0];
+$start = strtotime($_SESSION['dp']);
+$end = strtotime($_SESSION['dw']);
+$dni = ceil(abs($end - $start) / 86400);
+$cena*=$dni;
+
+if(isset($_POST['usl1'])) { 
+				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('3','$id_rez')";
+				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+	 }
+if(isset($_POST['usl2'])) { 
+				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('1','$id_rez')";
+				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+	 }
+if(isset($_POST['usl3'])) { 
+				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('2','$id_rez')";
+				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+	 }
+				$query = "insert into rachunek (id_rezerwacji,cena,id_rodz_rach,id_rodz_plat) values ('$id_rezerwacji','$cena','".$_POST['rachunek']."','".$_POST['platnosc']."')";
+				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+		unset($_SESSION['p']);
+		unset($_SESSION['dp']);
+		unset($_SESSION['dw']);
+	 			pg_close($dbconn);
+	 							echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Zarejestrowano.
+				</div>
+				</div>
+				</div>';
+}else{
             $query = "select nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu from klient where id_klienta='" . $_SESSION['id'] . "'";
             $result = pg_fetch_array(pg_query($query));
 
@@ -144,9 +180,9 @@ radios.click(function() {
 
             <th>Usługi dodatkowe:
                 <br>
-                <input id="checkbox1" name="usl" type="checkbox" ><label for="checkbox1">Parking</label>
-                <input id="checkbox2" name="usl" type="checkbox" ><label for="checkbox2">Sprzątanie</label>
-                <input id="checkbox3" name="usl" type="checkbox"><label for="checkbox3">Śniadanie</label>
+                <input id="checkbox1" name="usl1" type="checkbox" value="3"><label for="checkbox1">Parking</label>
+                <input id="checkbox2" name="usl2" type="checkbox" value="1"><label for="checkbox2">Sprzątanie</label>
+                <input id="checkbox3" name="usl3" type="checkbox" value="2"><label for="checkbox3">Śniadanie</label>
             </th>
 
         </tr>
@@ -168,8 +204,8 @@ radios.click(function() {
     <label><strong><h6>Sposób płatności</h6></strong></label>
     <table class="table">
         <div class="column">
-            <input type="radio" name="gotowka" id="gotowka"><label for="gotowka">Gotówką</label>
-            <input type="radio" name="karta" id="karta"><label for="karta">Kartą</label>
+            <input type="radio" name="platnosc" value="1" checked><label for="gotowka">Gotówką</label>
+            <input type="radio" name="platnosc" value="2"><label for="karta">Kartą</label>
         </div>
     </table>
 
@@ -177,8 +213,8 @@ radios.click(function() {
     <table class="table">
         <div class="column">
 
-            <input type="radio" name="paragon" id="paragon"><label for="paragon">Paragon</label>
-            <input type="radio" name="faktura" id="faktura"><label for="faktura">Faktura</label>
+            <input type="radio" name="rachunek" value="1" checked><label for="paragon">Paragon</label>
+            <input type="radio" name="rachunek" value="2"><label for="faktura">Faktura</label>
         </div>
     </table>
 
@@ -190,11 +226,9 @@ radios.click(function() {
         </form>
     </div>
 </div>
-';
+';}
         }
-		unset($_SESSION['p']);
-		unset($_SESSION['dp']);
-		unset($_SESSION['dw']);
+
 
 	}
 	

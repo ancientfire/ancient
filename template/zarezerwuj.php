@@ -5,6 +5,15 @@ if($_SESSION['valid']) {
 
         if ($_SESSION['kp'] == "k") {
 
+if(isset($_POST['zapisz'])){
+	if(isset($_POST['usl1'])){
+				echo $_SESSION['idr'];
+				//$query = "insert into logowanie (id_klienta,email,haslo) values ('$id','$mail','$pass1')";
+				//$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+				//pg_close($dbconn);
+		}
+
+}else{
             $query = "select nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu from klient where id_klienta='" . $_SESSION['id'] . "'";
             $result = pg_fetch_array(pg_query($query));
 
@@ -113,18 +122,19 @@ radios.click(function() {
         <thead>
         <tr>
             <th>Data przyjazdu:
-                <input type="text" name ="dp" class="span2"  id="dpd1" value ="' . $result[0] . '">
+                <input type="text" name ="dp" class="span2"  id="dpd1" value ="' . $result[0] . '" disabled>
                
             </th>
             <th>Data wyjazdu:
-                <input type="text" name ="dw" class="span2" id="dpd2" value ="' . $result[1] . '">
+                <input type="text" name ="dw" class="span2" id="dpd2" value ="' . $result[1] . '" disabled>
             </th>
 ';
-     $query = "select typ from typ_pokoju 
+     $query = "select typ_pokoju.typ from typ_pokoju 
                       join pokoj on pokoj.typ=typ_pokoju.typ
                       join rezerwacja_pokoju on rezerwacja_pokoju.id_pokoju=pokoj.id_pokoju
-                      join rezerwacja on rezerwacja.id_rez_pok=rezerwaja_pokoju.id_rez_pok
+                      join rezerwacja on rezerwacja.id_rez_pok=rezerwacja_pokoju.id_rez_pok
                       where rezerwacja.id_klienta='" . $_SESSION['id'] . "'";
+                      
             $result = pg_fetch_array(pg_query($query));
             echo'
             <th> Ilość osób:
@@ -135,9 +145,9 @@ radios.click(function() {
 
             <th>Usługi dodatkowe:
                 <br>
-                <input id="checkbox1" name="usl" type="checkbox" ><label for="checkbox1">Parking</label>
-                <input id="checkbox2" name="usl" type="checkbox" ><label for="checkbox2">Sprzątanie</label>
-                <input id="checkbox3" name="usl" type="checkbox"><label for="checkbox3">Śniadanie</label>
+                <input id="checkbox1" name="usl1" type="checkbox"><label for="checkbox1">Parking</label>
+                <input id="checkbox2" name="usl2" type="checkbox"><label for="checkbox2">Sprzątanie</label>
+                <input id="checkbox3" name="usl3" type="checkbox"><label for="checkbox3">Śniadanie</label>
             </th>
 
         </tr>
@@ -159,8 +169,8 @@ radios.click(function() {
     <label><strong><h6>Sposób płatności</h6></strong></label>
     <table class="table">
         <div class="column">
-            <input type="radio" name="gotowka" id="gotowka"><label for="gotowka">Gotówką</label>
-            <input type="radio" name="karta" id="karta"><label for="karta">Kartą</label>
+            <input type="radio" name="platnosc" id="platnosc" value="g" checked><label for="gotowka">Gotówką</label>
+            <input type="radio" name="platnosc" id="platnosc" value="k"><label for="karta">Kartą</label>
         </div>
     </table>
 
@@ -168,8 +178,8 @@ radios.click(function() {
     <table class="table">
         <div class="column">
 
-            <input type="radio" name="paragon" id="paragon"><label for="paragon">Paragon</label>
-            <input type="radio" name="faktura" id="faktura"><label for="faktura">Faktura</label>
+            <input type="radio" name="rachunek" id="rachunek" value="p" checked><label for="paragon">Paragon</label>
+            <input type="radio" name="rachunek" id="rachunek" value="f"><label for="faktura">Faktura</label>
         </div>
     </table>
 
@@ -181,7 +191,7 @@ radios.click(function() {
         </form>
     </div>
 </div>
-';
+';}
         }
         }
 ?>
