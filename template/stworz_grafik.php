@@ -8,6 +8,15 @@
                 <table class="table">
                     <thead>
                     <tr>
+
+                        <th>Stanowisko:
+
+                            <select name="stan">
+                                <option value="Recepcja">RECEPCJA</option>
+                                <option value="Kuchnia">KUCHNIA</option>
+                                <option value="Serwis Sprzątający">SERWIS SPRZĄTAJĄCY</option>
+                            </select> </th>
+                        
                         <th>ID pracownika:
 
                             <select name="id">
