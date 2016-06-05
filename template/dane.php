@@ -205,11 +205,8 @@ radios.click(function() {
 pg_close($dbconn);
 }else{
 
-$query = "select imie,nazwisko,adres,nr_tele from pracownik where id_pracownika='".$_SESSION['id']."'";
-$result = pg_fetch_array(pg_query($query));
 
-$adres=explode("*", $result[2]);
-
+if($_SESSION['s']==0){
 echo '
 <div class="primary callout klient">
     <div class="row">
@@ -218,7 +215,50 @@ echo '
 
             <label><strong>EDYTUJ DANE</strong></label>
 
-            <table class="table ramka3">
+            <table class="table ramka3">';
+            
+            if($_GET['ep']==1){
+			echo'
+            <thead>
+            <th> Stanowisko:
+			<select name="stan" onchange="location = this.value;">
+			<option disabled selected value> Wybierz stanowisko </option>
+			<option value="?s=dane&ep=1&st=1" '.(($_GET['st']==1)? 'selected':'').'>RECEPCJA</option>
+            <option value="?s=dane&ep=1&st=2" '.(($_GET['st']==2)? 'selected':'').'>KUCHNIA</option>
+            <option value="?s=dane&ep=1&st=3" '.(($_GET['st']==3)? 'selected':'').'>SERWIS SPRZĄTAJĄCY</option>
+			</select> </th>
+			<th> ID pracownika:
+			<select name="idp" onchange="location = this.value;">
+			<option disabled selected value> Wybierz ID </option>
+			';
+											
+								if(empty($_GET['st'])){ echo "<option value=''></option>";}else{
+								$query = "select id_pracownika from pracownik where id_stanowiska='".$_GET['st']."'";
+								$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+								//echo $query;
+								
+								while($row=pg_fetch_row($result)){
+								echo "<option value='?s=dane&ep=1&st=".$_GET['st']."&idp=$row[0]'".(($row[0]==$_GET['idp'])? 'selected':'').">$row[0]</option>";
+								}
+							}
+			echo '
+			</select>
+			</th>
+                </thead>';
+			}
+			
+			$query = "";
+			if($_GET['ep']!=1){
+			$query = "select imie,nazwisko,adres,nr_tele from pracownik where id_pracownika='".$_SESSION['id']."'";
+			}else{
+			if(!empty($_GET['st']) and !empty($_GET['idp'])){
+			$query = "select imie,nazwisko,adres,nr_tele from pracownik where id_pracownika='".$_GET['idp']."'";
+			}	
+			}
+			$result = pg_fetch_array(pg_query($query));
+
+			$adres=explode("*", $result[2]);
+                echo '
                 <thead>
                 <tr>
                     <th>Imię
@@ -261,6 +301,58 @@ echo '
         </div>
     </div>
 ';	
+}else{
+			$query = "select imie,nazwisko,adres,nr_tele from pracownik where id_pracownika='".$_SESSION['id']."'";
+			$result = pg_fetch_array(pg_query($query));
+
+			$adres=explode("*", $result[2]);
+	echo '
+<div class="primary callout klient">
+    <div class="row">
+        <div class="row large-12">
+
+            <label><strong>PRZEGLĄDAJ DANE</strong></label>
+
+            <table class="table ramka3">
+                <thead>
+                <tr>
+                    <th>Imię
+                        <input type="text" name="imie" value="'.$result[0].'" disabled /></th>
+
+                    <th>Nazwisko
+                        <input type="text" name="nazw" value="'.$result[1].'" disabled /></th>
+
+                    <th>Numer telefonu
+                        <input type="text" name="tel" value="'.$result[3].'" disabled /></th>
+                </tr>
+                </thead>
+
+
+
+                <thead>
+                <tr>
+                    <th>Miasto
+                        <input type="text" name="miasto" value="'.$adres[1].'" disabled /></th>
+
+                    <th>Ulica
+                        <input type="text" name="ulica" value="'.$adres[2].'" disabled /></th>
+
+                    <th>Kod pocztowy
+                        <input type="text" name="kod" value="'.$adres[0].'" disabled /></th>
+
+                    <th>Numer lokalu
+                        <input type="text" name="nlokalu" value="'.$adres[4].'" disabled /></th>
+
+                    <th>Numer mieszkania
+                        <input type="text" name="nmieszk" value="'.$adres[3].'" disabled /></th>
+                </tr>
+                </thead>
+            </table>
+            </div>
+        </div>
+    </div>
+';	
+}
 }
 
 }
