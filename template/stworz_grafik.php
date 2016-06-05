@@ -2,8 +2,21 @@
 include 'config.php'; ?>
 <div class="callout primary rejestr">
     <div class="row">
+		
+		<?php if(isset($_POST['zapisz'])){
+			//echo $_GET['st']." ".$_POST['id']." ".$POST['zm']." ".$_POST['gr']." ".$_POST['gz']." ".$_POST['dw'];
+			$data = date('o-m-d', strtotime($_POST['dw']));
+			$query = "insert into grafik (id_zmiany,id_pracownika,data,godzina_rozpoczęcia, godzina_zakończenia) values ('".$_POST['zm']."','".$_POST['id']."','".$data."','".$_POST['gr']."','".$_POST['gz']."')";
+
+			$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+			pg_close($dbconn);
+		}else{
+		
+		?>
+		
+		
         <form method="post">
-            <div class="row large-12">
+            <div class="row large-14">
 
                 <label><strong>DANE PRACOWNIKA</strong></label>
 
@@ -47,12 +60,12 @@ include 'config.php'; ?>
                         <select name="zm">
 								<?php
 
-								$query = "select id_zmiany from zmiana";
+								$query = "select id_zmiany, nazwa_zmiany from zmiana";
 								$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 								//echo $query;
 								
 								while($row=pg_fetch_row($result)){
-								echo "<option value='$row[0]'>$row[0]</option>";
+								echo "<option value='$row[0]'>$row[1]</option>";
 								}
 								pg_close($dbconn);
 							
@@ -85,12 +98,13 @@ include 'config.php'; ?>
                     </thead>
 
                     </table>
-                    <div class="large-12">
+                    <div class="large-14">
                         <input type="submit" name="zapisz" class="button rejestracja2" value="ZAPISZ GRAFIK" />
                     </div>
                 </div>
             </form>
         </div>
+        <?php } ?>
     </div>
     
                     <script>
