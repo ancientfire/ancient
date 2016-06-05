@@ -3,13 +3,19 @@ include 'config.php'; ?>
 <div class="callout primary rejestr">
     <div class="row">
 		
-		<?php if(isset($_POST['zapisz'])){
+		<?php if(isset($_POST['zapisz']) and !empty($_POST['dw'])){
 			//echo $_GET['st']." ".$_POST['id']." ".$POST['zm']." ".$_POST['gr']." ".$_POST['gz']." ".$_POST['dw'];
 			$data = date('o-m-d', strtotime($_POST['dw']));
 			$query = "insert into grafik (id_zmiany,id_pracownika,data,godzina_rozpoczęcia, godzina_zakończenia) values ('".$_POST['zm']."','".$_POST['id']."','".$data."','".$_POST['gr']."','".$_POST['gz']."')";
 
 			$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 			pg_close($dbconn);
+				echo '
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">		
+				Dodano.
+				</div>
+				</div>';	
 		}else{
 		
 		?>
@@ -33,7 +39,7 @@ include 'config.php'; ?>
                                 <option value="?s=stworz_grafik&st=3" <?php if($_GET['st']==3){ echo 'selected'; } ?>>SERWIS SPRZĄTAJĄCY</option>
                             </select> </th>
                         
-                        <th>ID pracownika:
+                        <th>Pracownik:
 
                             <select name="id">
 								
