@@ -80,18 +80,8 @@ echo '
                     <li><a href="?s=stworz_grafik">Dodaj grafik</a>
                     </li>
                     <li><a href="#">Edytuj grafik</a>
-                        <ul class="menu">
-                            <li><a href="#">Recepcja</a></li>
-                            <li><a href="#">Kuchnia</a></li>
-                            <li><a href="#">Sprzątanie</a></li>
-                        </ul>
                     </li>
                     <li><a href="#">Archiwum grafików</a>
-                        <ul class="menu">
-                            <li><a href="#">Recepcja</a></li>
-                            <li><a href="#">Kuchnia</a></li>
-                            <li><a href="#">Sprzątanie</a></li>
-                        </ul>
                     </li>
                 </ul>
             </li>
@@ -106,7 +96,7 @@ echo '
             <a href="#">Oferta</a>
             <ul class="menu">
                 <li><a href="#">Dodaj oferty</a></li>
-                <li><a href="#">Wyświetl/Edytuj oferty</a></li>
+                <li><a href="#">Wyświetl oferty</a></li>
             </ul>
             </li>
         </ul>';
@@ -119,7 +109,7 @@ echo '
             <li>
                 <a href="#">Twoje konto</a>
                 <ul class="menu">
-                    <li><a href="?s=dane">Wyświetl/edytuj dane</a></li>
+                    <li><a href="?s=dane">Wyświetl dane</a></li>
                     <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
                     <!-- ... -->
                 </ul>
