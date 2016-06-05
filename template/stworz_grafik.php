@@ -2,8 +2,6 @@
     <div class="row">
         <form method="post">
             <div class="row large-12">
-                <input type="radio" name="typ" id="firma" value="f"><label for="firma">FIRMA</label>
-                <input type="radio" name="typ" id="osoba" value="of" checked="checked"><label for="osoba">OSOBA FIZYCZNA</label>
 
                 <label><strong>DANE KLIENTA</strong></label>
 
