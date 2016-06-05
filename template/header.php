@@ -77,12 +77,7 @@ echo '
             <li>
                 <a href="#">Grafik pracowniczy</a>
                 <ul class="menu">
-                    <li><a href="#">Dodaj grafik</a>
-                        <ul class="menu">
-                            <li><a href="#">Recepcja</a></li>
-                            <li><a href="#">Kuchnia</a></li>
-                            <li><a href="#">Sprzątanie</a></li>
-                        </ul>
+                    <li><a href="?s=stworz_grafik">Dodaj grafik</a>
                     </li>
                     <li><a href="#">Edytuj grafik</a>
                         <ul class="menu">
