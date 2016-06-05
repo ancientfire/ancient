@@ -30,7 +30,7 @@ echo '
         
 <div class="top-bar">
     <div class="top-bar-left">';
-    if(!$_SESSION['valid']){
+    if(!isset($_SESSION['valid'])){
 		echo '
         <ul class="menu">
             <li class="menu-text">Hotel Project</li>
@@ -139,10 +139,10 @@ echo '
                             <li><a href="#">Sprzątanie</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Grafik tygodniowy</a>
+                    <li><a>Grafik tygodniowy</a>
                         <ul class="menu">
                             <li><a href="#">Recepcja</a></li>
-                            <li><a href="#">Kuchnia</a></li>
+                            <li><a href="?s=grafik_7_kuch">Kuchnia</a></li>
                             <li><a href="#">Sprzątanie</a></li>
                         </ul>
                     </li>
@@ -181,7 +181,7 @@ echo '
     <ul class="menu">
     ';
 
-		if (!$_SESSION['valid']) {
+		if (!isset($_SESSION['valid'])) {
 			echo '
     
         
