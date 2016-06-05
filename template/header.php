@@ -99,7 +99,7 @@ echo '
                 <a>Pracownicy</a>
                 <ul class="menu">
                     <li><a href="?s=pracownik&f=add">Dodaj pracownika</a></li>
-                    <li><a href="#">Wyświetl/Edytuj dane pracownika</a></li>
+                    <li><a href="?s=dane&ep=1">Wyświetl/Edytuj dane pracownika</a></li>
                 </ul>
             </li>
             <li>

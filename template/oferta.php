@@ -5,18 +5,23 @@
             <thead>
             <tr>
                 <th width="100">Rodzaj pokoju</th>
-                <th width="100">Od</th>
-                <th width="100">Do</th>
-                <th width="100">Cena</th>
+                <th width="100">Cena za pokój/doba</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Content Here</td>
-                <td>Content Here</td>
-                <td>Content Here</td>
-                <td>Content Here</td>
-            </tr>
+								<?php
+								include 'config.php';
+								$query = "select typ, cena from typ_pokoju";
+								$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+								//echo $query;
+								
+								while($row=pg_fetch_row($result)){
+								echo "<tr><td>$row[0]</td>
+				                <td>$row[1]</td></tr>
+				                ";
+								}
+							
+							?>
        
             </tbody>
 
