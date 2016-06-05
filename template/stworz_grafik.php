@@ -33,7 +33,7 @@ include 'config.php'; ?>
                                 <option value="?s=stworz_grafik&st=3" <?php if($_GET['st']==3){ echo 'selected'; } ?>>SERWIS SPRZĄTAJĄCY</option>
                             </select> </th>
                         
-                        <th>ID pracownika:
+                        <th>Pracownik:
 
                             <select name="id">
 								
