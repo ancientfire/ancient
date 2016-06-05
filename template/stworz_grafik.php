@@ -62,20 +62,24 @@ include 'config.php'; ?>
 
                         <th>Godzina rozpoczęcia:
                         <select name="gr">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="6">6</option>
+                            <option value="6:00">6:00</option>
+                            <option value="7:00">7:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="23:00">23:00</option>
+                            <option value="00:00">00:00</option>
                         </select> </th>
 
                         <th>Godzina zakończenia:
                             <select name="gz">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="6">6</option>
+                                <option value="6:00">6:00</option>
+                                <option value="7:00">7:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="23:00">23:00</option>
+                                <option value="00:00">00:00</option>
                             </select> </th>
                     </tr>
                     </thead>
