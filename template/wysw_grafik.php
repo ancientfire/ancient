@@ -3,7 +3,7 @@ include 'config.php';
 echo'
 <div class="primary callout archive">
     <div class="row large-10">
-        <h3><strong>Twój grafik</strong></h3>
+        <h3><strong>Wybrany grafik</strong></h3>
         <table>
             <thead>
             <tr>

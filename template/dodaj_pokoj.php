@@ -1,35 +1,64 @@
-<div class="primary callout">
+<?
+include 'config.php';
+if($_SESSION['valid']) {
+    if ($_SESSION['s'] == 0) {
+        if (isset($_POST['dodPok'])) {
+
+            $typPok = $_POST['typPok'];
+            if (!empty($typPok)) {
+
+            $query = "insert into pokoj (typ) values ('$typPok') returning id_pokoju";
+            $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+            pg_close($dbconn);
+
+                echo '			
+			    <div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">
+            Zapisano.
+				</div>
+				</div>
+				</div>';
+                header("refresh:3;url=index.php");
+            } else {
+                echo '
+				<div class="callout primary rejestr">
+				<div class="row">
+				<div class="small-3 small-centered columns text-center">
+            Nieprawidłowe lub puste dane.
+				</div>
+				</div>
+				</div>';
+                header("refresh:3");
+            }
+        }
+
+            echo '
+<div class="callout primary log">
     <div class="row">
-        <div class="row large-7">
-
-            <label><strong>Nowy pokój</strong></label>
-
-            <table class="table">
-                <thead>
-                <tr>
-                <tr>
-                    <th>Piętro
-                        <input type="text" placeholder="Piętro" /></th>
-
-                    <th>Ilość osób
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="6">6</option>
-                        </select>
-                    </th>
-
-                </tr>
-                </thead>
-            </table>
+        <form method="post">
+             <label><strong><h2>DODAJ POKÓJ</h2></strong></label>
+            <div class="row large-7">
 
 
-            <div class="large-12">
-                <a href="#" class="button dodajpok">DODAJ POKÓJ</a>
+                <table class="table ramka">
+                
+                    <thead>
+                    <tr>
+
+                        <th>Typ pokoju:
+                            <input type="text" name="typPok" placeholder="Typ pokoju"/>
+                        </th>
+                            
+                    </tr>
+                    <th><input type="submit" name="dodPok" class="button guzik" value="DODAJ POKÓJ" /></th>
+                    </thead>
+                </table>
             </div>
-        </div>
+        </form>
     </div>
-</div>
+</div>';
+        }
 
+    }
+?>

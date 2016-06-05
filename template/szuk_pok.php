@@ -244,14 +244,14 @@ radios.click(function() {
             </thead><tbody>
             <tr>
                 <td>$result[2]</td>
-                <td>Chuj dupa i kamieni kupa.</td>
+                <td>Ten pokój spełni Twoje najśmielsze oczekiwania! Został wybrany specjalnie dla Ciebie! <br> Zarezerwuj już dziś!</td>
                 <td>$result[4]</td>
             </tr>
             </tbody>
         </table>
         
     <div class=\"large-12\">
-                   <a href=\"?s=szuk_pok&r=1\" class=\"button radius\" >ZAREZERWUJ </a>
+                   <a href=\"?s=szuk_pok&r=1\" class=\"button \" >ZAREZERWUJ </a>
                    </div>
     </div>
 </div>";

@@ -5,7 +5,8 @@ body { background-image: url("../gradient.png");}
 .rejestracja2 {width: 1200px;}
 .ramka {margin-left: 250px;
                 margin-top: 15px;}
-.hotel {margin-top: 24px;}
-.rejestr {margin-top: 27px;}
+.hotel {margin-top: 27px;}
+.rejestr {margin-top: 15px;}
 .log {margin-top: 130px;}
-h2 {font-family: "Times New Roman";}
+h2 {font-family: "Times New Roman";
+	text-align: centred;}

@@ -23,7 +23,7 @@ while ($row = pg_fetch_row($result)){
 echo "
             <tr>
                 <td>$row[2]</td>
-                <td>Chuj dupa i kamieni kupa.</td>
+                <td>Ten pokój spełni Twoje najśmielsze oczekiwania! Został wybrany specjalnie dla Ciebie! Zarezerwuj już dziś!</td>
                 <td>$row[4]</td>
             </tr>";
 		}

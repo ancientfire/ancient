@@ -5,6 +5,7 @@
             <thead>
             <tr>
                 <th width="100">Rodzaj pokoju</th>
+                <th width="200">Opis</th>
                 <th width="100">Cena za pokój/doba</th>
             </tr>
             </thead>
@@ -17,6 +18,7 @@
 								
 								while($row=pg_fetch_row($result)){
 								echo "<tr><td>$row[0]</td>
+								<td>Taki super pokój, że każdy powinien go wynająć!</td>
 				                <td>$row[1]</td></tr>
 				                ";
 								}

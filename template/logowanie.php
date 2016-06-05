@@ -65,17 +65,15 @@ echo '
                 <th>E-mail
                 <input type="text" name="user" placeholder="Login" /></th>
             </tr>
-        </thead>
-        <thead>
+     
             <tr>
                 <th>Hasło
                 <input type="password" name="pass" placeholder="Hasło" /></th>
             </tr>
-        </thead>
-        <thead>
+      
             <tr>
-                <th><input type="submit" name="login" class="button radius" value="Zaloguj" />
-                <button class="secondary hollow button" href="#">Nie pamiętam hasła</button></th>
+                <th><input type="submit" name="login" class="button guzik" value="Zaloguj" /></th>
+               
             </tr>
         </thead>
     </table>

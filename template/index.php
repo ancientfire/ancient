@@ -11,24 +11,20 @@ if(!isset($_SESSION['valid'])){
                 </div>
             </div></br>
 
-            <br><div class="row small-up-4 medium-up-4 large-up-4">
+            <br><div class="row small-up-3 medium-up-3 large-up-3">
                 <div class="column">
-                    <a class="th" role="button" aria-label="Thumbnail" href="OHOTELU.png">
+                    <a class="th" role="button" aria-label="Thumbnail" href="?s=ohotelu">
                         <img aria-hidden=true src="OHOTELU.png"/>
                     </a>
                 </div>
                 <div class="column">
-                    <a class="th" role="button" aria-label="Thumbnail" href="OFERTA.png">
+                    <a class="th" role="button" aria-label="Thumbnail" href="?s=oferta">
                         <img aria-hidden=true src="OFERTA.png"/>
                         </a>
                 </div>
+            
                 <div class="column">
-                    <a class="th" role="button" aria-label="Thumbnail" href="AKTUALNOSCI.png">
-                        <img aria-hidden=true src="AKTUALNOSCI.png"/>
-                    </a>
-                </div>
-                <div class="column">
-                    <a class="th" role="button" aria-label="Thumbnail" href="ZAREZERWUJ.png">
+                    <a class="th" role="button" aria-label="Thumbnail" href="?s=szuk_pok">
                         <img aria-hidden=true src="ZAREZERWUJ.png"/>
                     </a>
                 </div>
@@ -57,7 +53,7 @@ if(!isset($_SESSION['valid'])){
                         <option value="6">6</option>
                     </select> </th>
 
-                  <th><br><a href="#" class="button radius">Wyszukaj</a></br></th>
+                  <th><br><a href="?s=logowanie" class="button radius">Wyszukaj</a></br></th>
                 </tr>
                 </thead>
             </table>
@@ -105,7 +101,7 @@ if(!isset($_SESSION['valid'])){
 <div class="primary callout">
     <div class="row large-10">
         <h3><strong>Oferta</strong></h3>
-        <p><a href="oferta.html">Zobacz więcej>></a></p>
+        <p><a href="?s=oferta">Zobacz więcej>></a></p>
     </div>
 </div>
 
@@ -113,7 +109,7 @@ if(!isset($_SESSION['valid'])){
 <div class="primary callout">
     <div class="row large-10">
         <h3><strong>Grafik</strong></h3>
-        <p><a href="grafik.html">Zobacz więcej>></a></p>
+        <p><a href="?s=wysw_grafik">Zobacz więcej>></a></p>
     </div>
 </div>
 			';	
@@ -234,7 +230,7 @@ if(!isset($_SESSION['valid'])){
                             <option value="6">6</option>
                         </select> </th>
 
-                    <th><br><a href="?s=szuk_pok" class="button radius">Wyszukaj</a></br></th>
+                    <th><br><a href="?s=pokojwyb" class="button radius">Wyszukaj</a></br></th>
                 </tr>
                 </thead>
             </table>

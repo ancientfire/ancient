@@ -56,7 +56,7 @@ echo '
                     <li><a href="#">Aktualne rezerwacje</a></li>
                     <li><a href="#">Edytuj rezerwację</a></li>
                     <li><a href="#">Usuń rezerwację</a></li>
-                    <li><a href="#">Historia rezerwacji</a></li>
+                    <li><a href="?h=1">Historia rezerwacji</a></li>
                     <li><a href="#">Karta pobytu</a></li>
                 </ul>
             </li>
@@ -67,6 +67,7 @@ echo '
 						echo ' 
 			<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
+            <li><a href="?">Strona główna</a></li>
             <li>
                 <a>Twoje konto</a>
                 <ul class="menu">
@@ -77,12 +78,9 @@ echo '
             <li>
                 <a href="#">Grafik pracowniczy</a>
                 <ul class="menu">
-                    <li><a href="?s=stworz_grafik">Dodaj grafik</a>
-                    </li>
-                    <li><a href="#">Edytuj grafik</a>
-                    </li>
-                    <li><a href="#">Archiwum grafików</a>
-                    </li>
+                    <li><a href="?s=stworz_grafik">Dodaj grafik</a></li>
+                    <li><a href="#">Edytuj grafik</a></li>
+                    <li><a href="#">Archiwum grafików</a></li>
                 </ul>
             </li>
             <li>
@@ -95,8 +93,9 @@ echo '
             <li>
             <a href="#">Oferta</a>
             <ul class="menu">
-                <li><a href="#">Dodaj oferty</a></li>
-                <li><a href="#">Wyświetl oferty</a></li>
+                <li><a href="?s=dodaj_oferte">Dodaj oferty</a></li>
+                <li><a href="?s=dodaj_pokoj">Dodaj pokój</a></li>
+                <li><a href="?s=oferta">Wyświetl oferty</a></li>
             </ul>
             </li>
         </ul>';
@@ -106,6 +105,7 @@ echo '
 					<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="?">Strona główna</a></li>
+          
             <li>
                 <a href="#">Twoje konto</a>
                 <ul class="menu">
