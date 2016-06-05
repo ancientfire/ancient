@@ -1,7 +1,7 @@
 <?php
 
 include 'config.php';
-if(!$_SESSION['valid']){
+if(!isset($_SESSION['valid'])){
 	echo '
           <br> <div class="callout primary">
                 <div class="row">
