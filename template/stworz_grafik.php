@@ -58,6 +58,10 @@
                             </select> </th>
                     </tr>
                     </thead>
+
+                    <div class="large-12">
+                        <input type="submit" name="zapisz" class="button rejestracja2" value="ZAPISZ GRAFIK" />
+                    </div>
                     </table>
                 </div>
             </form>
