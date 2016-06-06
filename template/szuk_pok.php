@@ -49,10 +49,12 @@ if(isset($_POST['usl3'])) {
 				<div class="callout primary rejestr">
 				<div class="row">
 				<div class="small-3 small-centered columns text-center">		
-				Zarejestrowano.
+				Zarezerwowano.
 				</div>
 				</div>
 				</div>';
+	header( "refresh:3;url=index.php" );
+
 }else{
             $query = "select nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu from klient where id_klienta='" . $_SESSION['id'] . "'";
             $result = pg_fetch_array(pg_query($query));
@@ -192,15 +194,7 @@ radios.click(function() {
 
 
     <label><strong><h4>PŁATNOŚĆ</h4></strong></label>
-    <table class="table">
-        <div class="column">
-
-            <div class="row large-4">
-                <input type="text" placeholder="Cena" />
-                <a href="#" class="button radius">Oblicz cenę</a>
-            </div>
-        </div>
-    </table>
+   
     <label><strong><h6>Sposób płatności</h6></strong></label>
     <table class="table">
         <div class="column">

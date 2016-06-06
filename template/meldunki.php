@@ -94,7 +94,7 @@ echo'
                 
             </table>
                             <div class="large-12">
-            <input type="submit" name="meldunek" class="button meldunek" value="ZAMELDUJ SIĘ" />
+            <input type="submit" name="meldunek" class="button meldunek" value="ZAMELDUJ" />
                 </div>
         </div>
         </form>

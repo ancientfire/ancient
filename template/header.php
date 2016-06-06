@@ -53,11 +53,11 @@ echo '
             <li>
                 <a href="#">Twoje rezerwacje</a>
                 <ul class="menu">
-                    <li><a href="#">Aktualne rezerwacje</a></li>
+                    <li><a href="?h=1">Aktualne rezerwacje</a></li>
                     <li><a href="#">Edytuj rezerwację</a></li>
                     <li><a href="#">Usuń rezerwację</a></li>
                     <li><a href="?h=1">Historia rezerwacji</a></li>
-                    <li><a href="#">Karta pobytu</a></li>
+                    <li><a href="?s=karta">Karta pobytu</a></li>
                 </ul>
             </li>
         </ul>';
@@ -79,8 +79,7 @@ echo '
                 <a href="#">Grafik pracowniczy</a>
                 <ul class="menu">
                     <li><a href="?s=stworz_grafik">Dodaj grafik</a></li>
-                    <li><a href="#">Edytuj grafik</a></li>
-                    <li><a href="#">Archiwum grafików</a></li>
+                    <li><a href="?s=wysw_grafik&l=3">Archiwum grafików</a></li>
                 </ul>
             </li>
             <li>
@@ -93,8 +92,10 @@ echo '
             <li>
             <a href="#">Oferta</a>
             <ul class="menu">
-                <li><a href="?s=dodaj_oferte">Dodaj oferty</a></li>
+                <li><a href="?s=dodaj_oferte">Dodaj ofertę</a></li>
+                 <li><a href="?s=usun_oferte">Usuń ofertę</a></li>
                 <li><a href="?s=dodaj_pokoj">Dodaj pokój</a></li>
+                <li><a href="?s=usun_pokoj">Usuń pokój</a></li>
                 <li><a href="?s=oferta">Wyświetl oferty</a></li>
             </ul>
             </li>
@@ -137,7 +138,7 @@ echo '
             </li>
             <li><a href="#">Rezerwacje</a>
                 <ul class="menu">
-                    <li><a href="#">Dodaj rezerwację</a></li>
+                    <li><a href="?s=szuk_pok">Dodaj rezerwację</a></li>
                     <li><a href="#">Edytuj rezerwację</a></li>
                     <li><a href="#">Usuń rezerwację</a></li>
                     <li><a href="#">Wyszukaj rezerwację</a></li>

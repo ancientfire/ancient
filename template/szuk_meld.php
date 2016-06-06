@@ -8,16 +8,13 @@ if($_SESSION['valid']) {
 		
 		
 		echo'
-<div class="primary callout">
+<div class="primary callout klient">
     <div class="row">
     <form method="post">
-        <div class="row large-12">
-            <label><strong>WYNIK WYSZUKIWANIA</strong></label>
-
-	<div class="primary callout archive">
-    <div class="row large-10">
-        <h3><strong>Szukaj meldunku</strong></h3>
-        <table>
+         
+    <div class="row large-12">
+        <h3><strong>Wyniki wyszukiwania</strong></h3>
+        <table class="table">
             <thead>
             <tr>
                  <th width="150">ID rezerwacji pokoju</th>
@@ -53,7 +50,7 @@ if($_SESSION['valid']) {
 
     echo'
 
-<div class="primary callout" >
+<div class="primary callout klient" >
   <form method="post">
   <table class="table">
   
