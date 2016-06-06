@@ -55,7 +55,7 @@ echo '
                 <a href="#">Twoje rezerwacje</a>
                 <ul class="menu">
                     <li><a href="?h=1">Aktualne rezerwacje</a></li>
-                    <li><a href="#">Edytuj rezerwację</a></li>
+                    <li><a href="?s=e_rez">Edytuj rezerwację</a></li>
                     <li><a href="#">Usuń rezerwację</a></li>
                     <li><a href="?h=1">Historia rezerwacji</a></li>
                     <li><a href="?s=karta">Karta pobytu</a></li>
@@ -141,7 +141,7 @@ echo '
             <li><a href="#">Rezerwacje</a>
                 <ul class="menu">
                     <li><a href="?s=szuk_pok">Dodaj rezerwację</a></li>
-                    <li><a href="#">Edytuj rezerwację</a></li>
+                    <li><a href="?s=e_rez">Edytuj rezerwację</a></li>
                     <li><a href="#">Usuń rezerwację</a></li>
                     <li><a href="#">Wyszukaj rezerwację</a></li>
                 </ul>
