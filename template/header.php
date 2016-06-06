@@ -50,6 +50,7 @@ echo '
                     <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
 				</ul>
 			</li>
+		
             <li>
                 <a href="#">Twoje rezerwacje</a>
                 <ul class="menu">
@@ -60,11 +61,12 @@ echo '
                     <li><a href="?s=karta">Karta pobytu</a></li>
                 </ul>
             </li>
+           
         </ul>';
 			} else {
 
 				if ($_SESSION['s'] == 0) {
-						echo ' 
+					echo ' 
 			<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="?">Strona główna</a></li>
@@ -101,8 +103,8 @@ echo '
             </li>
         </ul>';
 
-					}else{
-											echo '
+				} else if ($_SESSION['s'] == 1) {
+					echo '
 					<ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Hotel Project</li>
             <li><a href="?">Strona główna</a></li>
@@ -150,13 +152,61 @@ echo '
                     <li><a href="?s=szuk_meld">Wyszukaj</a></li>
                 </ul>
             </li>
+            <li><a href="?s=parking">Zajęte miejsca parkingowe</a></li>
         </ul>
 ';
-						
-					}
 
+				} else {
+					echo '
+	<ul class="dropdown menu" data-dropdown-menu>
+	<li class="menu-text">Hotel Project</li>
+            <li><a href="?">Strona główna</a></li>
+          
+            <li>
+                <a href="#">Twoje konto</a>
+                <ul class="menu">
+                    <li><a href="?s=dane">Wyświetl dane</a></li>
+                    <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Grafik pracowniczy</a>
+                <ul class="menu">
+                            <li><a href="?s=wysw_grafik">Twój grafik</a></li>
+                            <li><a href="?s=wysw_grafik&st=2&l=1">Dzienny - Kuchnia</a></li>
+                             <li><a href="?s=wysw_grafik&st=2&l=7">Tygodniowy - Kuchnia</a></li>
+                </ul>
+            </li>
+               		<li><a href="?s=ile_sniad">Ilość posiłków</a></li>
+        </ul>';
 
-
+				}
+				if ($_SESSION['s'] == 3) {
+					echo '
+	<ul class="dropdown menu" data-dropdown-menu>
+	<li class="menu-text">Hotel Project</li>
+            <li><a href="?">Strona główna</a></li>
+          
+            <li>
+                <a href="#">Twoje konto</a>
+                <ul class="menu">
+                    <li><a href="?s=dane">Wyświetl dane</a></li>
+                    <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
+                    <!-- ... -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Grafik pracowniczy</a>
+                <ul class="menu">
+                            <li><a href="?s=wysw_grafik">Twój grafik</a></li>
+                            <li><a href="?s=wysw_grafik&st=3&l=1">Dzienny - Serwis Sprzątający</a></li>
+                             <li><a href="?s=wysw_grafik&st=3&l=7">Tygodniowy - Serwis Sprzątający</a></li>
+                </ul>
+            </li>
+               		<li><a href="?s=ile_sprzat">Ilość pokoi do poprzątania</a></li>
+        </ul>';
+				}
 			}
 }
 		

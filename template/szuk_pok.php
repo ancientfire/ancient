@@ -16,7 +16,7 @@ if(!empty($_GET['r'])){
         $result = pg_query($query) or die('Query failed: ' . pg_last_error());
         $id_rezerwacji = pg_fetch_row($result)['0'];
 
-        if ($_SESSION['kp'] == "k") {
+        if ($_SESSION['kp']) {
 
 if(isset($_POST['zapisz'])){
 $query = "select typ_pokoju.cena from pokoj inner join typ_pokoju on (pokoj.typ=typ_pokoju.typ) where pokoj.id_pokoju='".$_SESSION['p']."'";
@@ -237,7 +237,7 @@ radios.click(function() {
         $io = $_POST['io'];
 
 
-        if ($_SESSION['kp'] == "k") {
+        if ($_SESSION['kp']) {
 
             if (!empty($dw) && !empty($dp) && !empty($io)) {
 
@@ -252,7 +252,9 @@ radios.click(function() {
                 //$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 */
 
-				$query = "select * from pokoj left outer join typ_pokoju on pokoj.typ=typ_pokoju.typ left outer join rezerwacja_pokoju on pokoj.id_pokoju=rezerwacja_pokoju.id_pokoju left outer join rezerwacja on rezerwacja_pokoju.id_rez_pok=rezerwacja.id_rez_pok where pokoj.typ='$io' and (not ('$dp' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) and not ('$dw' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) or rezerwacja_pokoju.id_pokoju is null) limit 1";
+				$query = "select * from pokoj left outer join typ_pokoju on pokoj.typ=typ_pokoju.typ 
+left outer join rezerwacja_pokoju on pokoj.id_pokoju=rezerwacja_pokoju.id_pokoju
+ left outer join rezerwacja on rezerwacja_pokoju.id_rez_pok=rezerwacja.id_rez_pok where pokoj.typ='$io' and (not ('$dp' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) and not ('$dw' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) or rezerwacja_pokoju.id_pokoju is null) limit 1";
 				$result = pg_fetch_row(pg_query($query));
 				$_SESSION['p'] = $result[1];
 				$_SESSION['dp'] = $dp;
