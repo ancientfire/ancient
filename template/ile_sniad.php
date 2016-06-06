@@ -14,7 +14,7 @@ if($_SESSION['valid']) {
         <thead>
             <tr>
                 <th width="100">ID pokoju</th>
-                <th width="100">Ilość posiłków</th>
+                <th width="100">Ilość śniadań</th>
                 </tr>
                 </thead>
         

@@ -156,7 +156,7 @@ echo '
         </ul>
 ';
 
-				} else {
+				} if($_SESSION['s']==2) {
 					echo '
 	<ul class="dropdown menu" data-dropdown-menu>
 	<li class="menu-text">Hotel Project</li>

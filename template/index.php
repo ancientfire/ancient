@@ -114,10 +114,10 @@ if(!isset($_SESSION['valid'])){
 </div>
 			';	
 				
-			}else{
-		if($_SESSION['s']==1){
-			if($_GET['h']!=1){
-			echo '
+			}else {
+				if ($_SESSION['s'] == 1) {
+					if ($_GET['h'] != 1) {
+						echo '
 <div class="primary callout archive">
     <div class="row large-10">
         <h3><strong>Aktualne rezerwacje</strong></h3>
@@ -134,16 +134,16 @@ if(!isset($_SESSION['valid'])){
                 <th width="100">Cena</th>
             </tr>
             </thead><tbody>';
-         
-        $query = "select rezerwacja.id_rezerwacji, rezerwacja.id_klienta, rezerwacja.id_rez_pok, rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena 
+
+						$query = "select rezerwacja.id_rezerwacji, rezerwacja.id_klienta, rezerwacja.id_rez_pok, rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena 
 from rezerwacja join rachunek on rachunek.id_rezerwacji= rezerwacja.id_rezerwacji 
 join usluga on usluga.id_rez_pok=rezerwacja.id_rez_pok 
 join typ_uslugi on typ_uslugi.id_uslugi=usluga.id_uslugi
 join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat limit 3";
-        $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+						$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-		while($row=pg_fetch_row($result)){
-            echo "       
+						while ($row = pg_fetch_row($result)) {
+							echo "       
             <tr>
                <td>$row[0]</td>
                 <td>$row[1]</td>
@@ -154,9 +154,9 @@ join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat lim
                 <td>$row[6]</td>
                 <td>$row[7]</td>
             </tr>";
-		}
-		pg_close($dbconn);
-            echo '
+						}
+						pg_close($dbconn);
+						echo '
             </tbody>
 
         </table>
@@ -165,8 +165,8 @@ join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat lim
         </div>
     </div>
 </div>';
-}else{
-	echo '
+					} else {
+						echo '
 	<div class="primary callout archive">
     <div class="row large-10">
         <h3><strong>Aktualne rezerwacje</strong></h3>
@@ -184,18 +184,18 @@ join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat lim
             </tr>
             </thead>
             <tbody>';
-        $query = "select rezerwacja.id_rezerwacji, rezerwacja.id_klienta, rezerwacja.id_rez_pok, rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena 
+						$query = "select rezerwacja.id_rezerwacji, rezerwacja.id_klienta, rezerwacja.id_rez_pok, rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena 
 from rezerwacja join rachunek on rachunek.id_rezerwacji= rezerwacja.id_rezerwacji 
 join usluga on usluga.id_rez_pok=rezerwacja.id_rez_pok 
 join typ_uslugi on typ_uslugi.id_uslugi=usluga.id_uslugi
 join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat";
 
 
-        $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+						$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-		while($row=pg_fetch_row($result)){
+						while ($row = pg_fetch_row($result)) {
 
-            echo "       
+							echo "       
             <tr>
                 <td>$row[0]</td>
                 <td>$row[1]</td>
@@ -206,17 +206,88 @@ join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat";
                 <td>$row[6]</td>
                 <td>$row[7]</td>
             </tr>";
-		}
-		pg_close($dbconn);
-                       echo ' </tbody>
+						}
+						pg_close($dbconn);
+						echo ' </tbody>
         </table>
     </div>
 </div>';
-	
-}
-			}else{	
+
+					}
+				} else if ($_SESSION['s'] == 2) {
+					echo '
+<div class="primary callout archive">
+    <div class="row large-7">
+        <h3><strong>Ilość posiłków na dany dzień</strong></h3>
+        <table>
+        <thead>
+            <tr>
+                <th width="100">ID pokoju</th>
+                <th width="100">Ilość śniadań</th>
+                </tr>
+                </thead>
+        
+            <tbody>
+				';
+
+					$query = "select count(id_uslugi), pokoj.typ, pokoj.id_pokoju from usluga 
+join rezerwacja_pokoju on rezerwacja_pokoju.id_rez_pok=usluga.id_rez_pok
+join rezerwacja on rezerwacja.id_rez_pok=rezerwacja_pokoju.id_rez_pok
+join pokoj on pokoj.id_pokoju= rezerwacja_pokoju.id_pokoju
+where id_uslugi='2' and current_date between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu
+group by pokoj.typ, pokoj.id_pokoju";
+
+					$result = pg_query($query);
+					while ($row = pg_fetch_row($result)) {
+						echo "
+            <tr>
+                <td>$row[2]</td>
+                <td>$row[1]</td>
+            </tr>";
+					}
+
+					echo '
+            </tbody>
+        </table>
+    </div>
+</div>';
+
+
+				} else if ($_SESSION['s'] == 3) {
+
+					$query = "select count(id_uslugi) from usluga 
+join rezerwacja_pokoju on rezerwacja_pokoju.id_rez_pok=usluga.id_rez_pok
+join rezerwacja on rezerwacja.id_rez_pok=rezerwacja_pokoju.id_rez_pok
+where id_uslugi='1' and current_date between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu";
+
+					$result = pg_query($query);
+
+					echo '
+<div class="primary callout archive">
+    <div class="row large-7">
+        <h3><strong>Ilość pokoi do sprzątania</strong></h3>
+        <table>
+        
+        
+        
+            <tbody>
+				';
+					while ($row = pg_fetch_row($result)) {
+						echo "
+            <tr>
+                <td>$row[0]</td>
+            </tr>";
+					}
+
+					echo '
+            </tbody>
+        </table>
+    </div>
+</div>';
+			}else{
+
 				if($_GET['h']!=1){
-			echo '
+					echo '
 			<div class="primary callout klient">
     <div class="row large-7">
         <h1><strong>Zarezerwuj już dziś!</strong></h1>
@@ -286,17 +357,17 @@ join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat";
                 <th width="150">Cena</th>
             </tr>
             </thead><tbody>';
-					
-        $query = "select rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena
+
+					$query = "select rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena
 from rezerwacja join rachunek on rachunek.id_rezerwacji= rezerwacja.id_rezerwacji 
 join usluga on usluga.id_rez_pok=rezerwacja.id_rez_pok 
 join typ_uslugi on typ_uslugi.id_uslugi=usluga.id_uslugi
 join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat
 where id_klienta=".$_SESSION['id']." limit 3";
-        $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+					$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-		while($row=pg_fetch_row($result)){
-            echo "       
+					while($row=pg_fetch_row($result)){
+						echo "       
             <tr>
                 <td>$row[0]</td>
                 <td>$row[1]</td>
@@ -304,9 +375,9 @@ where id_klienta=".$_SESSION['id']." limit 3";
         		<td>$row[3]</td>
         		<td>$row[4]</td>
             </tr>";
-		}
-		pg_close($dbconn);
-            echo '
+					}
+					pg_close($dbconn);
+					echo '
             </tbody>
 
         </table>
@@ -315,8 +386,8 @@ where id_klienta=".$_SESSION['id']." limit 3";
         </div>
     </div>
 </div>';
-}else{
-	echo '
+				}else{
+					echo '
 	<div class="primary callout archive">
     <div class="row large-10">
         <h3><strong> Twoje rezerwacje</strong></h3>
@@ -331,16 +402,16 @@ where id_klienta=".$_SESSION['id']." limit 3";
             </tr>
             </thead>
             <tbody>';
-        $query = "select rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena
+					$query = "select rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu, typ_uslugi.nazwa_uslugi, rodzaj_platnosci.nazwa_rodz_plat, rachunek.cena
 from rezerwacja join rachunek on rachunek.id_rezerwacji= rezerwacja.id_rezerwacji 
 join usluga on usluga.id_rez_pok=rezerwacja.id_rez_pok 
 join typ_uslugi on typ_uslugi.id_uslugi=usluga.id_uslugi
 join rodzaj_platnosci on rodzaj_platnosci.id_rodz_plat=rachunek.id_rodz_plat
 where id_klienta=".$_SESSION['id']."";
-        $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+					$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-		while($row=pg_fetch_row($result)){
-            echo "       
+					while($row=pg_fetch_row($result)){
+						echo "       
             <tr>
               <td>$row[0]</td>
                 <td>$row[1]</td>
@@ -348,15 +419,15 @@ where id_klienta=".$_SESSION['id']."";
         		<td>$row[3]</td>
         		<td>$row[4]</td>
             </tr>";
-		}
-		pg_close($dbconn);
-                       echo ' </tbody>
+					}
+					pg_close($dbconn);
+					echo ' </tbody>
         </table>
     </div>
 </div>';
-	
-}
-}
-}
+
+				}
+			}
+		}
 }
 ?>
