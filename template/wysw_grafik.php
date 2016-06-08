@@ -7,6 +7,7 @@ echo'
         <table>
             <thead>
             <tr>
+            	<th width="100">Stanowisko</th>
                 <th width="100">ID pracownika</th>
                 <th width="100">Data</th>
                 <th width="100">Zmiana</th>
@@ -29,10 +30,17 @@ $data0=date('o-m-d', strtotime('-31 days'));
 			$query="select * from grafik inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika where pracownik.id_stanowiska='".$_GET['st']."' and data between '$data' and '$data7' order by data asc limit ".$_GET['l'];
 		}
 		if($_GET['l']==2){
-			$query="select zmiana.nazwa_zmiany,grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia from grafik join zmiana on zmiana.id_zmiany = grafik.id_zmiany  inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika where  data between '$data' and '$data7' order by data asc";
+			$query="select stanowisko.nazwa_stanowiska, zmiana.nazwa_zmiany,grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia 
+from grafik join zmiana on zmiana.id_zmiany = grafik.id_zmiany  inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika 
+ join stanowisko on stanowisko.id_stanowiska=pracownik.id_stanowiska
+where  data between '$data' and '$data7' order by data asc";
 		}
 if($_GET['l']==3){
-	$query="select zmiana.nazwa_zmiany,grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia from grafik join zmiana on zmiana.id_zmiany = grafik.id_zmiany  inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika where  data between '$data0' and '$data1' order by data asc";
+	$query="select stanowisko.nazwa_stanowiska, zmiana.nazwa_zmiany,grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia
+ from grafik join zmiana on zmiana.id_zmiany = grafik.id_zmiany  inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika 
+ join stanowisko on stanowisko.id_stanowiska=pracownik.id_stanowiska
+ where  data between '$data0' and '$data1' order by data asc";
+
 }
 		
 		if(empty($_GET['l'])){
@@ -44,11 +52,12 @@ if($_GET['l']==3){
 		    while($row=pg_fetch_row($result)) {
             echo "
             <tr>
-                <td>$row[1]</td>
+            	 <td>$row[0]</td>
                 <td>$row[2]</td>
-                <td>$row[0]</td>
                 <td>$row[3]</td>
+                <td>$row[1]</td>
                 <td>$row[4]</td>
+                <td>$row[5]</td>
             </tr>";
         }	
             

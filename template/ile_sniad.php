@@ -13,6 +13,7 @@ if($_SESSION['valid']) {
         <table>
         <thead>
             <tr>
+              
                 <th width="100">ID pokoju</th>
                 <th width="100">Ilość śniadań</th>
                 </tr>
@@ -32,6 +33,7 @@ group by pokoj.typ, pokoj.id_pokoju";
     while ($row = pg_fetch_row($result)) {
         echo "
             <tr>
+               
                 <td>$row[2]</td>
                 <td>$row[1]</td>
             </tr>";
