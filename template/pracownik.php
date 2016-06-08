@@ -33,7 +33,8 @@ if($_GET['f']=='add'){
 					$query = "insert into pracownik (imie, nazwisko,adres,nr_tele,id_stanowiska) values ('$imie','$nazw','$kod','$tel','$st') returning id_pracownika";
 					$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 					$id = pg_fetch_row($result)['0'];
-				     
+
+
 					$query = "insert into logowanie (id_pracownika,email,haslo) values ('$id','$mail','$pass1')";
 					$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 					

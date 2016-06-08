@@ -17,7 +17,11 @@ echo'
             <tbody>
 				';
 
-    $query="select pracownik.id_pracownika, pracownik.imie, pracownik.nazwisko, zatrudnienie.data_zatrudnienia, stanowisko.nazwa_stanowiska from pracownik inner join zatrudnienie on zatrudnienie.id_pracownika=pracownik.id_pracownika inner join stanowisko on stanowisko.id_stanowiska = pracownik.id_stanowiska order by data_zatrudnienia, nazwisko, imie asc";
+    $query="select pracownik.id_pracownika, pracownik.imie, pracownik.nazwisko, zatrudnienie.data_zatrudnienia, stanowisko.nazwa_stanowiska 
+from pracownik inner join zatrudnienie on zatrudnienie.id_pracownika=pracownik.id_pracownika 
+inner join stanowisko on stanowisko.id_stanowiska = pracownik.id_stanowiska 
+order by data_zatrudnienia, nazwisko, imie asc";
+
 
 
 //echo $query;
