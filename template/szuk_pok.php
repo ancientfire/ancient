@@ -27,15 +27,21 @@ $end = strtotime($_SESSION['dw']);
 $dni = ceil(abs($end - $start) / 86400);
 $cena*=$dni;
 
-if(isset($_POST['usl1'])) { 
+if(isset($_POST['usl1'])) {
+				$query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
+				$cena+=$dni*pg_fetch_result(pg_query($query), 0);
 				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('3','$id_rez')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
-if(isset($_POST['usl2'])) { 
+if(isset($_POST['usl2'])) {
+				$query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
+				$cena+=$dni*pg_fetch_result(pg_query($query), 0);
 				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('1','$id_rez')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
-if(isset($_POST['usl3'])) { 
+if(isset($_POST['usl3'])) {
+				$query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
+				$cena+=$dni*pg_fetch_result(pg_query($query), 0);
 				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('2','$id_rez')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }

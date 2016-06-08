@@ -36,6 +36,9 @@ if($_GET['f']=='add'){
 				     
 					$query = "insert into logowanie (id_pracownika,email,haslo) values ('$id','$mail','$pass1')";
 					$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+					
+					$query = "insert into zatrudnienie (id_pracownika) values ('$id')";
+					$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 					pg_close($dbconn);
 					echo '
 					<div class="callout large primary rejestr">
