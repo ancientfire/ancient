@@ -3,23 +3,30 @@
 if($_SESSION['valid']) {
     include 'config.php';
 
+$nr_pok=0;
 if(!empty($_GET['r'])){
+
+	$nr_pok=0;
 	if($_SESSION['p']){
 		//echo $_SESSION['p'].' '.$_SESSION['dp'].' '.$_SESSION['dw'];
-		
 		$query = "insert into rezerwacja_pokoju (id_pokoju) values ('".$_SESSION['p']."') returning id_rez_pok";
 		$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 		$id_rez = pg_fetch_row($result)['0'];
-		
+
 		$data=date('o-m-d');
         $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta, id_rez_pok) values ('".$_SESSION['dp']."','".$_SESSION['dw']."', '$data','".$_SESSION['id']."','$id_rez') returning id_rezerwacji";
         $result = pg_query($query) or die('Query failed: ' . pg_last_error());
-        $id_rezerwacji = pg_fetch_row($result)['0'];
-
+        $_SESSION['id_rez'] = pg_fetch_row($result)['0'];
+        $_SESSION['id_p']=$_SESSION['p'];
+		unset($_SESSION['p']);
+		
+	}
         if ($_SESSION['kp']) {
 
-if(isset($_POST['zapisz'])){
-$query = "select typ_pokoju.cena from pokoj inner join typ_pokoju on (pokoj.typ=typ_pokoju.typ) where pokoj.id_pokoju='".$_SESSION['p']."'";
+if(isset($_POST['zapisz_rez'])){
+
+if($_SESSION['id_p']){        
+$query = "select typ_pokoju.cena from pokoj inner join typ_pokoju on (pokoj.typ=typ_pokoju.typ) where pokoj.id_pokoju='".$_SESSION['id_p']."'";
 //echo $query;
 $cena = pg_fetch_array(pg_query($query))[0];
 $start = strtotime($_SESSION['dp']);
@@ -45,9 +52,10 @@ if(isset($_POST['usl3'])) {
 				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('2','$id_rez')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
-				$query = "insert into rachunek (id_rezerwacji,cena,id_rodz_rach,id_rodz_plat) values ('$id_rezerwacji','$cena','".$_POST['rachunek']."','".$_POST['platnosc']."')";
+				$query = "insert into rachunek (id_rezerwacji,cena,id_rodz_rach,id_rodz_plat) values ('".$_SESSION['id_rez']."','$cena','".$_POST['rachunek']."','".$_POST['platnosc']."')";
+				//echo $query;
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
-		unset($_SESSION['p']);
+		unset($_SESSION['id_p']);
 		unset($_SESSION['dp']);
 		unset($_SESSION['dw']);
 	 			pg_close($dbconn);
@@ -60,6 +68,7 @@ if(isset($_POST['usl3'])) {
 				</div>
 				</div>';
 	header( "refresh:3;url=index.php" );
+}
 
 }else{
             $query = "select nazwa,nazwisko,imie,adres,pesel,nip,nr_telefonu from klient where id_klienta='" . $_SESSION['id'] . "'";
@@ -159,7 +168,7 @@ radios.click(function() {
 
 
             $query = "select data_przyjazdu, data_wyjazdu from rezerwacja
-                      where id_klienta='" . $_SESSION['id'] . "' and id_rezerwacji='$id_rezerwacji'";
+                      where id_klienta='" . $_SESSION['id'] . "' and id_rezerwacji='".$_SESSION['id_rez']."'";
             $result = pg_fetch_array(pg_query($query));
 
             echo'
@@ -177,7 +186,7 @@ radios.click(function() {
                 <input type="text" name ="dw" class="span2" id="dpd2" value ="' . $result[1] . '">
             </th>
 ';
-     $query = "select typ from pokoj where id_pokoju='".$_SESSION['p']."'";
+     $query = "select typ from pokoj where id_pokoju='".$_SESSION['id_p']."'";
             $result = pg_fetch_array(pg_query($query));
             echo'
             <th> Ilość osób:
@@ -220,7 +229,7 @@ radios.click(function() {
 
 </div>
          <div class="large-12">
-            <input type="submit" name="zapisz" class="button rejestracja2" value="ZAREZERWUJ" />
+            <input type="submit" name="zapisz_rez" class="button rejestracja2" value="ZAREZERWUJ" />
                 </div>
         </div>
         </form>
@@ -230,8 +239,8 @@ radios.click(function() {
         }
 
 
-	}
 	
+
 }else{
 
     if (isset($_POST['wyszukaj'])) {
@@ -247,24 +256,27 @@ radios.click(function() {
 
             if (!empty($dw) && !empty($dp) && !empty($io)) {
 
-/*
-				$data=date('o-m-d');
-                $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta) values ('$dp','$dw', '$data','".$_SESSION['id']."')";
+
+				//$data=date('o-m-d');
+                //$query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta) values ('$dp','$dw', '$data','".$_SESSION['id']."')";
 				//echo $query;
-                $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+                //$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 
                 //$query = "insert into typ _pokoju (typ) values ('$io')";
                 //$result = pg_query($query) or die('Query failed: ' . pg_last_error());
-*/
 
-				$query = "select * from pokoj left outer join typ_pokoju on pokoj.typ=typ_pokoju.typ 
+
+				$query = "select  pokoj.id_pokoju, pokoj.typ, typ_pokoju.cena from pokoj left outer join typ_pokoju on pokoj.typ=typ_pokoju.typ 
 left outer join rezerwacja_pokoju on pokoj.id_pokoju=rezerwacja_pokoju.id_pokoju
- left outer join rezerwacja on rezerwacja_pokoju.id_rez_pok=rezerwacja.id_rez_pok where pokoj.typ='$io' and (not ('$dp' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) and not ('$dw' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) or rezerwacja_pokoju.id_pokoju is null) limit 1";
+ left outer join rezerwacja on rezerwacja_pokoju.id_rez_pok=rezerwacja.id_rez_pok 
+ where pokoj.typ='$io' and (not ('$dp' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) 
+ and not ('$dw' between rezerwacja.data_przyjazdu and rezerwacja.data_wyjazdu) or rezerwacja_pokoju.id_pokoju is null) limit 1";
 				$result = pg_fetch_row(pg_query($query));
-				$_SESSION['p'] = $result[1];
+				$_SESSION['p'] = $result[0];
 				$_SESSION['dp'] = $dp;
 				$_SESSION['dw'] = $dw;
+				//echo $_SESSION['p'];
 				if($result){
 					echo "<div class=\"primary callout archive\">
     <div class=\"row large-10\">
@@ -275,13 +287,13 @@ left outer join rezerwacja_pokoju on pokoj.id_pokoju=rezerwacja_pokoju.id_pokoju
 
                 <th width=\"100\">Ilość osób</th>
                 <th width=\"200\">Opis</th>
-                <th width=\"100\">Cena</th>
+                <th width=\"100\">Cena za dobę</th>
             </tr>
             </thead><tbody>
             <tr>
-                <td>$result[2]</td>
+                <td>$result[1]</td>
                 <td>Ten pokój spełni Twoje najśmielsze oczekiwania! Został wybrany specjalnie dla Ciebie! <br> Zarezerwuj już dziś!</td>
-                <td>$result[4]</td>
+                <td>$result[2]</td>
             </tr>
             </tbody>
         </table>
@@ -294,14 +306,14 @@ left outer join rezerwacja_pokoju on pokoj.id_pokoju=rezerwacja_pokoju.id_pokoju
 				}
 
                 pg_close($dbconn);
-			
+
 			}
-		} 
-		
-		
+		}
+
+
 }else{
                 echo '
-                <div class="primary callout ramka3">
+                <div class="primary callout archive">
     <div class="row large-7">
     <form method="post">
         <h1><strong>Sprawdź dostępność</strong></h1>
