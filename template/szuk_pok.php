@@ -3,18 +3,18 @@
 if($_SESSION['valid']) {
     include 'config.php';
 
-$nr_pok=0;
+
 if(!empty($_GET['r'])){
 
-	$nr_pok=0;
+	
 	if($_SESSION['p']){
 		//echo $_SESSION['p'].' '.$_SESSION['dp'].' '.$_SESSION['dw'];
 		$query = "insert into rezerwacja_pokoju (id_pokoju) values ('".$_SESSION['p']."') returning id_rez_pok";
 		$result = pg_query($query) or die('Query failed: ' . pg_last_error());
-		$id_rez = pg_fetch_row($result)['0'];
+		$_SESSION['id_rez_p'] = pg_fetch_row($result)['0'];
 
 		$data=date('o-m-d');
-        $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta, id_rez_pok) values ('".$_SESSION['dp']."','".$_SESSION['dw']."', '$data','".$_SESSION['id']."','$id_rez') returning id_rezerwacji";
+        $query = "insert into rezerwacja (data_przyjazdu,data_wyjazdu, data_rezerwacji, id_klienta, id_rez_pok) values ('".$_SESSION['dp']."','".$_SESSION['dw']."', '$data','".$_SESSION['id']."','".$_SESSION['id_rez_p']."') returning id_rezerwacji";
         $result = pg_query($query) or die('Query failed: ' . pg_last_error());
         $_SESSION['id_rez'] = pg_fetch_row($result)['0'];
         $_SESSION['id_p']=$_SESSION['p'];
@@ -37,19 +37,19 @@ $cena*=$dni;
 if(isset($_POST['usl1'])) {
 				$query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
 				$cena+=$dni*pg_fetch_result(pg_query($query), 0);
-				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('3','$id_rez')";
+				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('3','".$_SESSION['id_rez_p']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
 if(isset($_POST['usl2'])) {
 				$query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
 				$cena+=$dni*pg_fetch_result(pg_query($query), 0);
-				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('1','$id_rez')";
+				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('1','".$_SESSION['id_rez_p']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
 if(isset($_POST['usl3'])) {
 				$query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
 				$cena+=$dni*pg_fetch_result(pg_query($query), 0);
-				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('2','$id_rez')";
+				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('2','".$_SESSION['id_rez_p']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
 				$query = "insert into rachunek (id_rezerwacji,cena,id_rodz_rach,id_rodz_plat) values ('".$_SESSION['id_rez']."','$cena','".$_POST['rachunek']."','".$_POST['platnosc']."')";
