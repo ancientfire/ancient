@@ -309,6 +309,7 @@ echo '
 	echo '
 <div class="primary callout klient">
     <div class="row">
+    <form method="post">
         <div class="row large-12">
 
             <label><strong>PRZEGLĄDAJ DANE</strong></label>
@@ -317,13 +318,13 @@ echo '
                 <thead>
                 <tr>
                     <th>Imię
-                        <input type="text" name="imie" value="'.$result[0].'" disabled /></th>
+                        <input type="text" name="imie" value="'.$result[0].'" /></th>
 
                     <th>Nazwisko
-                        <input type="text" name="nazw" value="'.$result[1].'" disabled /></th>
+                        <input type="text" name="nazw" value="'.$result[1].'" /></th>
 
                     <th>Numer telefonu
-                        <input type="text" name="tel" value="'.$result[3].'" disabled /></th>
+                        <input type="text" name="tel" value="'.$result[3].'" /></th>
                 </tr>
                 </thead>
 
@@ -332,23 +333,25 @@ echo '
                 <thead>
                 <tr>
                     <th>Miasto
-                        <input type="text" name="miasto" value="'.$adres[1].'" disabled /></th>
+                        <input type="text" name="miasto" value="'.$adres[1].'" /></th>
 
                     <th>Ulica
-                        <input type="text" name="ulica" value="'.$adres[2].'" disabled /></th>
+                        <input type="text" name="ulica" value="'.$adres[2].'" /></th>
 
                     <th>Kod pocztowy
-                        <input type="text" name="kod" value="'.$adres[0].'" disabled /></th>
+                        <input type="text" name="kod" value="'.$adres[0].'" /></th>
 
                     <th>Numer lokalu
-                        <input type="text" name="nlokalu" value="'.$adres[4].'" disabled /></th>
+                        <input type="text" name="nlokalu" value="'.$adres[4].'" /></th>
 
                     <th>Numer mieszkania
-                        <input type="text" name="nmieszk" value="'.$adres[3].'" disabled /></th>
+                        <input type="text" name="nmieszk" value="'.$adres[3].'" /></th>
                 </tr>
                 </thead>
             </table>
+            <input type="submit" name="zapisz" class="button rejestracja2" value="ZAPISZ" />
             </div>
+            </form>
         </div>
     </div>
 ';	
