@@ -29,12 +29,46 @@ while($row=pg_fetch_row($result)) {
                 <td>$row[3]</td>
                 <td>$row[4]</td>
             </tr>";
+}	if($_SESSION['s']==1) {
+    echo '
+			<select name="idr" onchange="location = this.value;">
+			<option disabled selected value> Wybierz ID rezerwacji pokoju </option>';
+
+    $query = "select id_rez_pok  from rezerwacja";
+
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+    //echo $query;
+
+    while ($row = pg_fetch_row($result)){
+
+    if ($_SESSION['ml'] == 1) {
+
+        $query = "select 'Pan(i) ' || meldunek.imie || ' ' || meldunek.nazwisko || ' przebywał(a) w Hotelu Project od: ' || rezerwacja.data_przyjazdu || ' do: ' || rezerwacja.data_wyjazdu || '. '
+ from meldunek 
+ join rezerwacja_pokoju on rezerwacja_pokoju.id_rez_pok = meldunek.id_rez_pok 
+ join rezerwacja on rezerwacja.id_rez_pok= rezerwacja_pokoju.id_rez_pok
+ where meldunek.id_rez_pok='" . $_GET['idr'] . "'";
+
+
+//echo $query;
+        $result = pg_query($query);
+
+        while ($row = pg_fetch_row($result)) {
+            echo "
+            <tr>
+                <td>$row[0]</td>
+                <td>$row[1]</td>
+                <td>$row[2]</td>
+                <td>$row[3]</td>
+            </tr>";
+        }
+    }
+    }
 }
 
-echo '
+                echo '
             </tbody>
         </table>
     </div>
 </div>';
-
 ?>
