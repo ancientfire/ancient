@@ -25,7 +25,7 @@ if(!isset($_SESSION['valid'])){
             
                 <div class="column">
                     <a class="th" role="button" aria-label="Thumbnail" href="?s=kontakt">
-                        <img aria-hidden=true src="ZAREZERWUJ.png"/>
+                        <img aria-hidden=true src="KONTAKT.png"/>
                     </a>
                 </div>
             </div></br>
