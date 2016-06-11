@@ -31,12 +31,19 @@ echo'
 				<div class="small-3 small-centered columns text-center">		
 				Usunięto.
 				</div>
+<<<<<<< HEAD
+				</div></div>';
+				header( "refresh:3;url=index.php?s=wysw_grafik");
+=======
 				</div></div>';	
+>>>>>>> 0fc1edb8744d5fa32267a51425b5fb8d9f7749e1
 			}
 			$data=date('o-m-d');
 			$data7=date('o-m-d', strtotime('+7 days'));
 $data1=date('o-m-d', strtotime('-1 day'));
-$data0=date('o-m-d', strtotime('-31 days'));
+$data0=date('o-m-t');
+$data2=date('o-m-01');
+
 			$query="";
 			if($_GET['l']==1){
 			$query="select pracownik.id_stanowiska, grafik.id_zmiany, grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia from grafik inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika where pracownik.id_stanowiska='".$_GET['st']."' and data='".$data."' order by data asc";
@@ -55,12 +62,17 @@ if($_GET['l']==3){
 	$query="select stanowisko.nazwa_stanowiska, zmiana.nazwa_zmiany,grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia, grafik.id_grafiku
  from grafik join zmiana on zmiana.id_zmiany = grafik.id_zmiany  inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika 
  join stanowisko on stanowisko.id_stanowiska=pracownik.id_stanowiska
- where  data between '$data0' and '$data1' order by data asc";
-
+ where  data between '$data2' and '$data1' order by data asc";
 }
 		
 		if(empty($_GET['l'])){
+<<<<<<< HEAD
+			$query="select pracownik.id_stanowiska, grafik.id_zmiany, grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia 
+from grafik inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika 
+where pracownik.id_stanowiska='".$_SESSION['s']."' and data between '$data' and '$data0' and pracownik.id_pracownika='".$_SESSION['id']."' order by data asc";
+=======
 			$query="select pracownik.id_stanowiska, grafik.id_zmiany, grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia from grafik inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika where pracownik.id_stanowiska='".$_SESSION['s']."' and data between '$data' and '$data7' and pracownik.id_pracownika='".$_SESSION['id']."' order by data asc";
+>>>>>>> 0fc1edb8744d5fa32267a51425b5fb8d9f7749e1
 		}
 	        //echo $query;
 	        $result = pg_query($query);

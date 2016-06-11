@@ -174,7 +174,7 @@ echo'
                 </thead>
             </table>
                         <div class="large-12">
-            <input type="submit" name="zapisz" class="button rejestracja2" value="ZAPISZ" />
+            <input type="submit" name="zapisz" class="button rejestracja2" value="EDYTUJ" />
                 </div>
         </div>
         </form>
@@ -294,7 +294,7 @@ echo '
                 </thead>
             </table>
             <div class="large-12">
-            <input type="submit" name="zapisz" class="button rejestracja2" value="ZAPISZ" />
+            <input type="submit" name="zapisz" class="button rejestracja2" value="EDYTUJ" />
                 </div>
             </div>
             </form>

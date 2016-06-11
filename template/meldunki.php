@@ -30,7 +30,7 @@ if (isset($_POST['meldunek'])) {
 				</div>
 				</div>
 				</div>';
-            //header( "refresh:3;url=index.php" );
+            header( "refresh:3;url=index.php?s=meldunki" );
         }else{
             echo '
 				<div class="callout primary rejestr">
@@ -40,7 +40,7 @@ if (isset($_POST['meldunek'])) {
 				</div>
 				</div>
 				</div>';
-            //header( "refresh:3;url=meldunki.php" );
+            header( "refresh:3;url=index.php?s=meldunki" );
         }
     }
 }else{

@@ -30,6 +30,7 @@ if($_SESSION['valid']) {
 				</div>
 				</div>
 				</div>';
+                    header( "refresh:3;url=index.php");
                 } else {
                     pg_close($dbconn);
                     echo '
@@ -40,6 +41,7 @@ if($_SESSION['valid']) {
 				</div>
 				</div>
 				</div>';
+                    header( "refresh:3;url=index.php?s=zmiana_hasla");
                 }
             } else {
                 pg_close($dbconn);
@@ -51,17 +53,16 @@ if($_SESSION['valid']) {
 				</div>
 				</div>
 				</div>';
+                header( "refresh:3;url=index.php?s=zmiana_hasla");
             }
 
         }
     }else{
 
 echo'
-<<<<<<< HEAD
+
     <div class="callout primary klient" >
-=======
-    <div class="callout primary" >
->>>>>>> 02bde1449f8c3849ecd79a74469010332e6b7499
+
     <div class="row" >
     <form method="post">
         <div class="large-7 ramka" >
@@ -87,25 +88,16 @@ echo'
                 </tr >
                 </thead >
 
-            </table >
-<<<<<<< HEAD
+            </table>
             </div>
                             <thead >
                 <tr >
-                    <th ><input type = "submit" name = "zmiana" class="button rejestracja2" value = "Zmien" >
+                    <th ><input type = "submit" name = "zmiana" class="button rejestracja2" value = "ZMIEŃ" >
 
                 </tr >
                 </thead >
-      
-=======
-                            <thead >
-                <tr >
-                    <th ><input type = "submit" name = "zmiana" class="button" value = "Zmien" >
-
-                </tr >
-                </thead >
+     
         </div >
->>>>>>> 02bde1449f8c3849ecd79a74469010332e6b7499
         </form>
     </div >
 </div >';}
