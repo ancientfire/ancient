@@ -31,8 +31,12 @@ echo'
 				<div class="small-3 small-centered columns text-center">		
 				Usunięto.
 				</div>
+<<<<<<< HEAD
 				</div></div>';
 				header( "refresh:3;url=index.php?s=wysw_grafik");
+=======
+				</div></div>';	
+>>>>>>> 0fc1edb8744d5fa32267a51425b5fb8d9f7749e1
 			}
 			$data=date('o-m-d');
 			$data7=date('o-m-d', strtotime('+7 days'));
@@ -62,9 +66,13 @@ if($_GET['l']==3){
 }
 		
 		if(empty($_GET['l'])){
+<<<<<<< HEAD
 			$query="select pracownik.id_stanowiska, grafik.id_zmiany, grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia 
 from grafik inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika 
 where pracownik.id_stanowiska='".$_SESSION['s']."' and data between '$data' and '$data0' and pracownik.id_pracownika='".$_SESSION['id']."' order by data asc";
+=======
+			$query="select pracownik.id_stanowiska, grafik.id_zmiany, grafik.id_pracownika, grafik.data, grafik.godzina_rozpoczęcia, grafik.godzina_zakończenia from grafik inner join pracownik on grafik.id_pracownika=pracownik.id_pracownika where pracownik.id_stanowiska='".$_SESSION['s']."' and data between '$data' and '$data7' and pracownik.id_pracownika='".$_SESSION['id']."' order by data asc";
+>>>>>>> 0fc1edb8744d5fa32267a51425b5fb8d9f7749e1
 		}
 	        //echo $query;
 	        $result = pg_query($query);
