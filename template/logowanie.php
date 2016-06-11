@@ -37,6 +37,7 @@
 				</div>
 				</div>
 				</div>';
+					  header( "refresh:3");
 					}
                }else{
 				pg_close($dbconn);   
@@ -48,6 +49,7 @@
 				</div>
 				</div>
 				</div>';
+				   header( "refresh:3");
 				   
 			   }
             }else{

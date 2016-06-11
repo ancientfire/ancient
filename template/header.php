@@ -46,7 +46,7 @@ echo '
               <li>
 				<a>Twoje konto</a>
 				<ul class="menu">
-					<li><a href="?s=dane">Wyświetl/Edytuj dane</a></li>
+					<li><a href="?s=dane">Edytuj dane</a></li>
                     <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
 				</ul>
 			</li>
@@ -56,7 +56,7 @@ echo '
                 <ul class="menu">
                     <li><a href="?h=1">Aktualne rezerwacje</a></li>
                     <li><a href="?s=e_rez">Edytuj rezerwację</a></li>
-                    <li><a href="?h=1">Historia rezerwacji</a></li>
+                    <li><a href="?s=arch_rez">Historia rezerwacji</a></li>
                     <li><a href="?s=karta">Karta pobytu</a></li>
                 </ul>
             </li>
@@ -72,7 +72,7 @@ echo '
             <li>
                 <a>Twoje konto</a>
                 <ul class="menu">
-                    <li><a href="?s=dane">Wyświetl/Edytuj dane</a></li>
+                    <li><a href="?s=dane">Edytuj dane</a></li>
                     <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
                 </ul>
             </li>
@@ -87,7 +87,7 @@ echo '
                 <a>Pracownicy</a>
                 <ul class="menu">
                     <li><a href="?s=pracownik&f=add">Dodaj pracownika</a></li>
-                    <li><a href="?s=dane&ep=1">Wyświetl/Edytuj dane pracownika</a></li>
+                    <li><a href="?s=dane&ep=1">Edytuj dane pracownika</a></li>
                 </ul>
             </li>
             <li>
@@ -111,8 +111,10 @@ echo '
             <li>
                 <a href="#">Twoje konto</a>
                 <ul class="menu">
-                    <li><a href="?s=dane">Wyświetl dane</a></li>
+                    <li><a href="?s=dane">Edytuj dane</a></li>
                     <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
+                    <li><a href="?s=NALICZANIE">Zobacz wypłatę</a></li>
+                    <li><a href="?s=karta_pracownika">Karta pracownika</a></li>
                     <!-- ... -->
                 </ul>
             </li>
@@ -139,18 +141,21 @@ echo '
             </li>
             <li><a href="#">Rezerwacje</a>
                 <ul class="menu">
-                    <li><a href="?s=szuk_pok">Dodaj rezerwację</a></li>
                     <li><a href="?s=e_rez">Edytuj rezerwację</a></li>
                     <li><a href="?h=1">Wyświetl rezerwacje</a></li>
+                    <li><a href="?s=arch_rez">Archiwum rezerwacji</a></li>
                 </ul>
             </li>
             <li><a href="#">Meldunki</a>
                 <ul class="menu">
                     <li><a href="?s=meldunki">Zamelduj</a></li>
                     <li><a href="?s=szuk_meld">Wyszukaj</a></li>
+                    <li><a href="?s=lista_meld">Wyświelt meldunki </a></li>
+                    <li><a href="?s=arch_meld">Archiwum meldunków </a></li>
+                    <li><a href="?s=karta">Karta meldunku</a></li>
                 </ul>
             </li>
-            <li><a href="?s=parking">Zajęte miejsca parkingowe</a></li>
+            <li><a href="?s=parking">Miejsca parkingowe</a></li>
         </ul>
 ';
 
@@ -158,13 +163,15 @@ echo '
 					echo '
 	<ul class="dropdown menu" data-dropdown-menu>
 	<li class="menu-text">Hotel Project</li>
-            <li><a href="?">Strona główna</a></li>
+            <li><a href="?">Ilość posiłków</a></li>
           
             <li>
                 <a href="#">Twoje konto</a>
                 <ul class="menu">
                     <li><a href="?s=dane">Wyświetl dane</a></li>
                     <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
+                    <li><a href="?s=NALICZANIE">Zobacz wypłatę</a></li>
+                    <li><a href="?s=karta_pracownika">Karta pracownika</a></li>
                     <!-- ... -->
                 </ul>
             </li>
@@ -172,11 +179,11 @@ echo '
                 <a href="#">Grafik pracowniczy</a>
                 <ul class="menu">
                             <li><a href="?s=wysw_grafik">Twój grafik</a></li>
-                            <li><a href="?s=wysw_grafik&st=2&l=1">Dzienny - Kuchnia</a></li>
+                            <li><a href="?s=wysw_grafik&st=2&l=1">Całodniowy - Kuchnia</a></li>
                              <li><a href="?s=wysw_grafik&st=2&l=7">Tygodniowy - Kuchnia</a></li>
                 </ul>
             </li>
-               		<li><a href="?s=ile_sniad">Ilość posiłków</a></li>
+               	
         </ul>';
 
 				}
@@ -184,13 +191,15 @@ echo '
 					echo '
 	<ul class="dropdown menu" data-dropdown-menu>
 	<li class="menu-text">Hotel Project</li>
-            <li><a href="?">Strona główna</a></li>
+            <li><a href="?">Pokoje do sprzątania</a></li>
           
             <li>
                 <a href="#">Twoje konto</a>
                 <ul class="menu">
                     <li><a href="?s=dane">Wyświetl dane</a></li>
                     <li><a href="?s=zmiana_hasla">Zmień hasło</a></li>
+                    <li><a href="?s=NALICZANIE">Zobacz wypłatę</a></li>
+                    <li><a href="?s=karta_pracownika">Karta pracownika</a></li>
                     <!-- ... -->
                 </ul>
             </li>
@@ -198,11 +207,11 @@ echo '
                 <a href="#">Grafik pracowniczy</a>
                 <ul class="menu">
                             <li><a href="?s=wysw_grafik">Twój grafik</a></li>
-                            <li><a href="?s=wysw_grafik&st=3&l=1">Dzienny - Serwis Sprzątający</a></li>
+                            <li><a href="?s=wysw_grafik&st=3&l=1">Całodniowy - Serwis Sprzątający</a></li>
                              <li><a href="?s=wysw_grafik&st=3&l=7">Tygodniowy - Serwis Sprzątający</a></li>
                 </ul>
             </li>
-               		<li><a href="?s=ile_sprzat">Ilość pokoi do poprzątania</a></li>
+               
         </ul>';
 				}
 			}

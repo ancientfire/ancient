@@ -66,7 +66,7 @@ if($_GET['f']=='add'){
 					<div class="callout primary rejestr">
 					<div class="row">
 					<div class="small-5 small-centered columns text-center">		
-					Klient o takim adresie email już istnieje.
+					Pracownik o takim adresie email już istnieje.
 					</div>
 					</div>
 					</div>';

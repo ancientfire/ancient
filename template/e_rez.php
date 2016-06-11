@@ -4,11 +4,11 @@
 include 'config.php';
 
 if(isset($_POST['zapisz'])){
-			$query = "delete from usluga where id_rez_pok=".$_GET['idr'];
+			$query = "delete from usluga where id_rez_pok='".$_GET['idr']."'";
 			$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 			
 if(isset($_POST['usl1'])) { 
-				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('3','".$_GET['idr']."')";
+				$query = "insert into usluga (id_uslugi, id_rez_pok) values ('3','".$_GET['idr']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
 if(isset($_POST['usl2'])) { 
@@ -19,7 +19,7 @@ if(isset($_POST['usl3'])) {
 				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('2','".$_GET['idr']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
-				$query = "update rachunek set id_rodz_rach=".$_POST['rachunek'].", id_rodz_plat=".$_POST['platnosc']." where id_rezerwacji=".$_SESSION['idrez'];
+				$query = "update rachunek set id_rodz_rach=".$_POST['rachunek'].", id_rodz_plat=".$_POST['platnosc']." where id_rezerwacji='".$_SESSION['idrez']."'";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error()); 
 	 
 	pg_close($dbconn);
@@ -31,6 +31,7 @@ if(isset($_POST['usl3'])) {
 				</div>
 				</div>
 				</div>';
+	header( "refresh:3;url=index.php?h=1");
 }else{
 echo '
 <div class="primary callout klient">
@@ -49,8 +50,10 @@ echo '
 			
 			$query="";
 			if($_SESSION['s']==1){
-								$query = "select id_rez_pok from rezerwacja";
+				$data=date('o-m-d', strtotime('+7 days'));
+								$query = "select id_rez_pok from rezerwacja where data_przyjazdu > '$data'";
 							}else{
+				$data=date('o-m-d');
 								$query = "select id_rez_pok from rezerwacja where id_klienta=".$_SESSION['id'];
 							}
 								$result = pg_query($query) or die('Query failed: ' . pg_last_error());
@@ -90,9 +93,10 @@ echo '
     </table>';
 
 if(!empty($_GET['idr'])){    
-$query = "select rachunek.id_rodz_rach, rachunek.id_rodz_plat, rezerwacja.id_rezerwacji from rezerwacja inner join rachunek on (rezerwacja.id_rezerwacji=rachunek.id_rezerwacji) where rezerwacja.id_rez_pok=".$_GET['idr'];
+$query = "select rachunek.id_rodz_rach, rachunek.id_rodz_plat, rezerwacja.id_rezerwacji from rezerwacja 
+inner join rachunek on (rezerwacja.id_rezerwacji=rachunek.id_rezerwacji) where rezerwacja.id_rez_pok='".$_GET['idr']."'";
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
-$row=pg_fetch_row($result);
+$row= pg_fetch_row($result);
 $_SESSION['idrez']=$row[2];
 }
 
@@ -118,7 +122,7 @@ echo '
 
 </div>
          <div class="large-12">
-            <input type="submit" name="zapisz" class="button rejestracja2" value="ZAREZERWUJ" />
+            <input type="submit" name="zapisz" class="button rejestracja2" value="ZMIEŃ" />
                 </div>
         </div>
         </form>

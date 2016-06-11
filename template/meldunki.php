@@ -30,7 +30,7 @@ if (isset($_POST['meldunek'])) {
 				</div>
 				</div>
 				</div>';
-            //header( "refresh:3;url=index.php" );
+            header( "refresh:3;url=index.php?s=meldunki" );
         }else{
             echo '
 				<div class="callout primary rejestr">
@@ -40,7 +40,7 @@ if (isset($_POST['meldunek'])) {
 				</div>
 				</div>
 				</div>';
-            //header( "refresh:3;url=meldunki.php" );
+            header( "refresh:3;url=index.php?s=meldunki" );
         }
     }
 }else{
@@ -60,7 +60,20 @@ echo'
                 <thead>
                 <tr>
                     <th>ID rezerwacji pokoju
-                        <input type="text" name="IDrp" placeholder="ID rezerwacji pokoju" /></th>
+                    <select name="IDrp">
+			<option disabled selected value> Wybierz ID </option>
+                    ';
+                    
+                   $query="select id_rez_pok from rezerwacja_pokoju";
+//echo $query;
+$result = pg_query($query);
+
+while($row=pg_fetch_row($result)){
+								echo "<option value='$row[0]'>$row[0]</option>";
+								}
+                    echo '
+                    </select>
+                        </th>
 
                     <th>Imię
                         <input type="text" name="imie" placeholder="Imię" /></th>

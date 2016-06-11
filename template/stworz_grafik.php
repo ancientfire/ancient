@@ -15,7 +15,8 @@ include 'config.php'; ?>
 				<div class="small-3 small-centered columns text-center">		
 				Dodano.
 				</div>
-				</div>';	
+				</div>';
+            header( "refresh:3;url=index.php?s=stworz_grafik");
 		}else{
 		
 		?>
