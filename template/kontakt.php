@@ -18,7 +18,7 @@ $adres=explode("*", $row[1]);
        
        
                  <tr><h4><th width="100">Nazwa :  '.$row[0].' </th></h4></tr>
-                 <tr><h4><th width="100">Adres :  '.$adres[0].' '.$adres[1].' '.$adres[2].'</th></h4></tr>
+                 <tr><h4><th width="100">Adres :  '.$adres[0].' ul.'.$adres[1].' nr '.$adres[2].'</th></h4></tr>
                  <tr><h4><th width="100">Numer telefonu :  '.$row[2].'</th></h4></tr>
                  <tr><h4><th width="100">Strona WWW : '.$row[3].'</th></h4></tr>
                  <tr><h4><th width="100">E-mail :  '.$row[4].'</th></h4></tr>
