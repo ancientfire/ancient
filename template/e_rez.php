@@ -4,22 +4,39 @@
 include 'config.php';
 
 if(isset($_POST['zapisz'])){
+	
+	        $query="select typ_pokoju.cena, rezerwacja.data_przyjazdu, rezerwacja.data_wyjazdu from rezerwacja inner join rezerwacja_pokoju on (rezerwacja.id_rez_pok=rezerwacja_pokoju.id_rez_pok) inner join pokoj on (rezerwacja_pokoju.id_pokoju=pokoj.id_pokoju) inner join typ_pokoju on (pokoj.typ=typ_pokoju.typ) where rezerwacja.id_rezerwacji=".$_SESSION['idrez'];
+			$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+			$row = pg_fetch_array(pg_query($query));
+			$cena = $row[0];
+			$start = strtotime($row[1]);
+			$end = strtotime($row[2]);
+			$dni = ceil(abs($end - $start) / 86400);
+			$cena*=$dni;
+			//echo $cena;
+			
 			$query = "delete from usluga where id_rez_pok='".$_GET['idr']."'";
 			$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 			
-if(isset($_POST['usl1'])) { 
+if(isset($_POST['usl1'])) {
+	            $query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
+				$cena+=$dni*pg_fetch_result(pg_query($query), 0); 
 				$query = "insert into usluga (id_uslugi, id_rez_pok) values ('3','".$_GET['idr']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
 if(isset($_POST['usl2'])) { 
+	            $query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
+				$cena+=$dni*pg_fetch_result(pg_query($query), 0); 
 				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('1','".$_GET['idr']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
-if(isset($_POST['usl3'])) { 
+if(isset($_POST['usl3'])) {
+	            $query = "select cena_uslugi from typ_uslugi where id_uslugi='".$_POST['usl1']."'";
+				$cena+=$dni*pg_fetch_result(pg_query($query), 0); 
 				$query = "insert into usluga (id_uslugi,id_rez_pok) values ('2','".$_GET['idr']."')";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 	 }
-				$query = "update rachunek set id_rodz_rach=".$_POST['rachunek'].", id_rodz_plat=".$_POST['platnosc']." where id_rezerwacji='".$_SESSION['idrez']."'";
+				$query = "update rachunek set cena=$cena, id_rodz_rach=".$_POST['rachunek'].", id_rodz_plat=".$_POST['platnosc']." where id_rezerwacji='".$_SESSION['idrez']."'";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error()); 
 	 
 	pg_close($dbconn);
